@@ -13,7 +13,7 @@ class FrontEndController extends Controller
     {
         if(Auth::check())
         {
-            return "home logged in";
+            return view('home');
         }
         else
         {

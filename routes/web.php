@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\FrontEndController;
 
@@ -25,6 +26,10 @@ Route::post("/api/register",[FrontEndController::class,"register_submit"]);
 //session
 Route::get("/api/session",[SessionController::class,"index"]);
 Route::post("/api/session",[SessionController::class,"store"]);
+
+//course
+Route::get("/api/course",[CourseController::class,"index"]);
+Route::post("/api/course",[CourseController::class,"store"]);
 
 
 

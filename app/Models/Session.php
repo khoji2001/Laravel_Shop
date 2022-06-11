@@ -10,7 +10,9 @@ class Session extends Model
     use HasFactory;
     protected $fillable = [
         'subject',
-        'image_path',
-        'description',
+        'text',
+        'video',
+        'voice',
+        'image'
     ];
 }
