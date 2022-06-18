@@ -13,6 +13,7 @@ class Session extends Model
         'text',
         'video',
         'voice',
-        'image'
+        'image',
+        'course_id'
     ];
 }

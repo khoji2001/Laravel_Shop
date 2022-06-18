@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,14 +12,16 @@ class FrontEndController extends Controller
 {
     public function index()
     {
-        if(Auth::check())
-        {
-            return view('home');
-        }
-        else
-        {
-            return "home";
-        }
+        // if(Auth::check())
+        // {
+        //     return view('home');
+        // }
+        // else
+        // {
+        //     return "home";
+        // }
+        $courses = Course::all();
+        return view('home',compact("courses"));
     }
     public function dashboard()
     {
@@ -26,38 +29,43 @@ class FrontEndController extends Controller
     }
     public function login()
     {
-        return "login";
+        return view('auth.login');
     }
     public function login_submit(Request $request)
     {
         $data= $request->all();
-
+        
         $this->validate($request,[
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
+       
         $credentials = $request->only('username', 'password');
+        // dd(Auth::attempt($credentials));
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('home')
-                        ->withSuccess('Signed in');
+            return redirect()->route('home');
+        }
+        else
+        {
+        return redirect()->route('login')->with('message', 'Wrong user or password ');
         }
   
-        return redirect()->route('login')->withSuccess('Login details are not valid');;
 
 
     }
     public function register()
     {
-        return "register";
+        return view("auth.register");
     }
     public function register_submit(Request $request)
     {
 
         $this->validate($request,[
-            'username' => 'required|max:200',
-            'email' => 'required|email|max:200',
-            'password' => 'required',
-            'phone' => 'required|min:8|max:12'
+            'username' => 'required|max:200|unique:users,username',
+            'email' => 'required|email|max:200|unique:users,email',
+            'password' => 'required_with:password_confirmation|same:password_confirmation',
+            'phone' => 'required|min:8|max:12|unique:users,phone',
+            'password_confirmation' => 'required'
         ]);
         $user = User::create([
             'phone' => $request->phone,
@@ -76,5 +84,9 @@ class FrontEndController extends Controller
         }
 
     }
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+      }
 
 }

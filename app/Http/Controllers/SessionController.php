@@ -12,10 +12,11 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ses = Session::all();
-        return view("welcome",compact('ses'));
+        // dd($request);
+        $id = $request->query('id');
+        return view("session",compact('id'));
     }
 
     /**
@@ -34,7 +35,7 @@ class SessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         $request->validate([
             'subject' => "required",
@@ -44,7 +45,8 @@ class SessionController extends Controller
         ]);
 
         $data = $request->all();
-
+        $int = (int) filter_var($data['course_id'], FILTER_SANITIZE_NUMBER_INT);
+        $data['course_id'] = $int;
         $keys = array_keys($data);
         foreach($keys as $key){
             switch ($key) {
@@ -69,7 +71,7 @@ class SessionController extends Controller
         
         $session = Session::create($data);
 
-        return $session;
+        return redirect("api/session/add/{$int}");
 
         // $keys = array_keys($data);
         // $keys = array_diff($keys, array('subject'));
@@ -112,7 +114,9 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        //
+        $sessions = Session::where('course_id',$id)->get();
+
+        return view("add",compact('sessions', 'id'));
     }
 
     /**

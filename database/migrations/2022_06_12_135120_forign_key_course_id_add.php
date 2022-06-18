@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->string('image')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
         });
     }
 
@@ -30,5 +33,3 @@ return new class extends Migration
         });
     }
 };
-
-

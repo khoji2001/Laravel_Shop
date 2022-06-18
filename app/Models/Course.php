@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
@@ -12,5 +13,9 @@ class Course extends Model
         'subject',
         'cover',
         'description',
+        'user_id'
     ];
+    // public function user(){
+    //     return $this->hasMany(User::class,"id","user_id"); 
+    // }
 }
