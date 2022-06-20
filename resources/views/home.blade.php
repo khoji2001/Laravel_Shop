@@ -5,34 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/reset.min.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/header-1.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    <div>
-        home
-    </div>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+          <a href="#" class="brand">Simple</a>
+          <nav class="nav">
+            <button class="nav__toggle" aria-expanded="false" type="button">
+              menu
+            </button>
+            <ul class="nav__wrapper">
+              {{-- <li class="nav__item"><a href="#">Home</a></li> --}}
+                {{-- search          --}}
+                @auth
+                    <li class="nav__item"><a href="#">{{auth()->user()->username}}</a></li>
+
+                    <li class="nav__item">
+                        <a href="{{ route('course') }}">create your course</a>
+                    </li>
+
+                    <li class="nav__item">  
+                        <a href="{{ route('logout') }}" >Logout</a>
+                    </li>
+                @else
+                    <li class="nav__item">  
+                        <a href="{{ route('login') }}">Log in</a>
+                    </li>
+                        @if (Route::has('register'))
+                        <li class="nav__item">  
+                            <a href="{{ route('register') }}" >Register</a>
+                        </li><br><br>
+                        @endif
+                @endauth
+            </ul>
+          </nav>
+        </div>
+    </header>
     {{-- <a href="{{ route('login') }}">login<a><br>
     <a href="{{ route('register') }}">register<a> --}}
+    <div></div><br><br><br><br><br><br>
     
-    @auth
-        {{-- <cart /> --}}
-        <div>{{auth()->user()->username}}</div><br>
-        
-        <li class="nav-item">  
-            <a href="{{ route('course') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">create your course</a>
-        </li>
-        <li class="nav-item">  
-            <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</a>
-        </li>
-    @else
-        <li class="nav-item">  
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-        </li>
-            @if (Route::has('register'))
-            <li class="nav-item">  
-                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-            </li>    
-            @endif
-    @endauth
 
     @foreach ($courses as $item)
         <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
@@ -42,15 +60,17 @@
             <img src="{{asset("images/" . $item->cover)}}" class="w-4 mb-8 shadow-xl" 
             width="400"
             alt="" src ="bfjdsnk">
-            {{-- <video controls width="400">
-                            
-                <source src="{{asset("videos/" . $item->video)}}"
-                        type="video/mp4">
             
-                Sorry, your browser doesn't support embedded videos.
-            </video> --}}
 
         </div><br>
     @endforeach
+    <footer>
+        <div class="wrapper site-header__wrapper">
+            <a href="#" class="brand">Simple</a>
+            <nav class="nav">
+                <a href="#" class="brand">Simple</a>
+            </nav>
+          </div>
+    </footer>
 </body>
 </html>

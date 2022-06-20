@@ -51,18 +51,18 @@ class SessionController extends Controller
         foreach($keys as $key){
             switch ($key) {
                 case "video":
-                    $video = time() . "-" . $request->subject . "." . $request->video->extension();
+                    $video = time() . "." . $request->video->extension();
                     $request->video->move(public_path("videos"),$video);
                     $data['video'] = $video;
                     break;
                 case "voice":
-                    $voice = time() . "-" . $request->subject . "." . $request->voice->extension();
+                    $voice = time() . "." . $request->voice->extension();
                     $request->voice->move(public_path("voices"),$voice);
                     $data['voice'] = $voice;
 
                     break;
                 case "image":
-                    $image = time() . "-" . $request->subject . "." . $request->image->extension();
+                    $image = time() . "." . $request->image->extension();
                     $request->image->move(public_path("images"),$image);
                     $data['image'] = $image;
                     break;
@@ -73,37 +73,8 @@ class SessionController extends Controller
 
         return redirect("api/session/add/{$int}");
 
-        // $keys = array_keys($data);
-        // $keys = array_diff($keys, array('subject'));
+        
       
-        // foreach($keys as $key){
-        //     $$key = time() . "-" . $request->subject . "." . $request->$key->extension();
-        //     echo $$key;
-        //     $request->$key->move(public_path("files"),$key);
-        //     $session = Session::create([
-        //         'subject' => $request->subject,
-        //         strval($key) => $request->$key
-        //     ]);
-        // };
-        // return $session;
-        
-        // $video = time() . "-" . $request->subject . "." . $request->video->extension();
-
-        // $voice = time() . "-" . $request->subject . "f." . $request->voice->extension();
-
-        // // $request->image->move(public_path("images"),$image_name);
-
-        // $request->video->move(public_path("files"),$video);
-        // $request->voice->move(public_path("files"),$voice);
-
-        
-        // $session = Session::create([
-        //     'subject' => $request->subject,
-        //     'text' => $request->text,
-        //     'video' => $video,
-        //     'voice' => $voice
-        // ]);
-        // return $session;
     }
 
     /**

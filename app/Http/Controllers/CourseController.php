@@ -26,7 +26,7 @@ class CourseController extends Controller
             'description' => "required",
             'cover' => "required|max:10000|mimes:jpg,png,jpeg",
         ]);
-        $cover = time() . "-" . $request->subject . "." . $request->cover->extension();
+        $cover = time() . "." . $request->cover->extension();
 
         $request->cover->move(public_path("images"),$cover);
 
