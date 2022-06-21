@@ -23,13 +23,12 @@ class CourseController extends Controller
         
         $request->validate([
             'subject' => "required",
-            'description' => "required",
             'cover' => "required|max:10000|mimes:jpg,png,jpeg",
         ]);
         $cover = time() . "." . $request->cover->extension();
 
         $request->cover->move(public_path("images"),$cover);
-
+        // dd(auth()->user());
         $course = Course::create([
             'subject' => $request->subject,
             'description' => $request->description,

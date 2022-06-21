@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/header-1.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -17,15 +18,19 @@
         <div class="wrapper site-header__wrapper">
           <a href="#" class="brand">Simple</a>
           <nav class="nav">
-            <button class="nav__toggle" aria-expanded="false" type="button">
-              menu
-            </button>
+            
+            
             <ul class="nav__wrapper">
               {{-- <li class="nav__item"><a href="#">Home</a></li> --}}
                 {{-- search          --}}
+                <form action="" >
+                    <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
+                    <input type="submit" value=&#x1F50D; style="padding-right: 6.50em;">
+                </form>
                 @auth
+                    
                     <li class="nav__item"><a href="#">{{auth()->user()->username}}</a></li>
-
+                    
                     <li class="nav__item">
                         <a href="{{ route('course') }}">create your course</a>
                     </li>
@@ -64,11 +69,15 @@
 
         </div><br>
     @endforeach
-    <footer>
+    <footer class="site-footer">
         <div class="wrapper site-header__wrapper">
-            <a href="#" class="brand">Simple</a>
+            {{-- <a href="#" class="brand">Simple</a> --}}
             <nav class="nav">
-                <a href="#" class="brand">Simple</a>
+                <ul class="nav__wrapper">
+                    
+                    <li class="nav__item"><a href="#">Break it Down , Get to the point</a></li>
+
+                </ul>
             </nav>
           </div>
     </footer>

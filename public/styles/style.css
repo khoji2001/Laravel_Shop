@@ -91,6 +91,27 @@ input[type=password], select, textarea {
   margin-bottom: 16px; /* Bottom margin */
   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
+input[type=email], select, textarea {
+  width: 50%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+input[type=Longtext], select, textarea {
+  width: 50%; /* Full width */
+  height: max-content;
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
 
 /* Style the submit button with a specific background color etc */
 input[type=submit] {
@@ -110,6 +131,22 @@ input[type=submit]:hover {
 /* Add a background color and some padding around the form */
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: #e2efff;/*f0f5fb*/
   padding: 20px;
 }
+.containerbut {
+  border-radius: 5px;
+  background-color: #fefefe;/*f0f5fb*/
+  padding: 20px;
+  
+}
+
+#footer { 
+  width: 900px;
+  color: #333;
+  border: 1px solid #ccc;
+  background: #BD9C8C;
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+ }
+ 

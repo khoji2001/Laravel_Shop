@@ -42,10 +42,10 @@
         <form method="POST" action="{{ route('login') }}">
           @csrf
           <label for="username">Username</label><br>
-          <input type="text" id="username" name="username" placeholder="username"><br>
+          <input type="text" id="username" name="username" placeholder="username" value="{{ old('username') }}"><br>
       
           <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" placeholder="password"><br>
+          <input type="password" id="password" name="password" placeholder="password" ><br>
             
           <input type="submit" value="Submit">
       

@@ -21,6 +21,7 @@ class FrontEndController extends Controller
         //     return "home";
         // }
         $courses = Course::all();
+        // dd(auth()->user());
         return view('home',compact("courses"));
     }
     public function dashboard()
@@ -47,7 +48,7 @@ class FrontEndController extends Controller
         }
         else
         {
-        return redirect()->route('login')->with('message', 'Wrong user or password ');
+            return redirect()->back()->withInput()->with('message', 'Wrong user or password ');
         }
   
 
@@ -80,7 +81,7 @@ class FrontEndController extends Controller
         }
         else
         {
-            return redirect()->route('register');
+            return redirect()->back()->withInput();
         }
 
     }
