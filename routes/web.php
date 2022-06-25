@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\FrontEndController;
+use Iman\Streamer\VideoStreamer;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,21 @@ Route::get("/api/session/add/{id}",[SessionController::class,"show"]);
 Route::get("/api/course",[CourseController::class,"index"])->name('course');
 Route::post("/api/course",[CourseController::class,"store"]);
 Route::get("/course/{id}",[CourseController::class,"show"]);
+
+//search
+Route::post("/search",[FrontEndController::class,"search"]);
+
+Route::get("/test",[FrontEndController::class,"test"]);
+
+
+// https://github.com/imanghafoori1/laravel-video
+Route::get('/viidd/{video}', function ($video) {
+    $path = public_path('videos/'.$video);
+    VideoStreamer::streamFile($path);
+});
+
+
+
 
 
 

@@ -28,48 +28,13 @@
                     <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
                     <input type="submit" value=&#x1F50D; style="padding-right: 6.50em;">
                 </form>
-                @auth
-                    
-                    <li class="nav__item"><a href="#">{{auth()->user()->username}}</a></li>
-                    
-                    <li class="nav__item">
-                        <a href="{{ route('course') }}">create your course</a>
-                    </li>
-
-                    <li class="nav__item">  
-                        <a href="{{ route('logout') }}" >Logout</a>
-                    </li>
-                @else
-                    <li class="nav__item">  
-                        <a href="{{ route('login') }}">Log in</a>
-                    </li>
-                        @if (Route::has('register'))
-                        <li class="nav__item">  
-                            <a href="{{ route('register') }}" >Register</a>
-                        </li><br><br>
-                        @endif
-                @endauth
             </ul>
           </nav>
         </div>
     </header>
     {{-- <a href="{{ route('login') }}">login<a><br>
     <a href="{{ route('register') }}">register<a> --}}
-    <div></div><br><br><br><br><br><br>
-    
-
-    {{-- @foreach ($courses as $item)
-        <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
-            <div class="div">{{$item->subject}}</div>
-            <div class="div">{{$item->description}}</div>
-
-            <img src="{{asset("images/" . $item->cover)}}" class="w-4 mb-8 shadow-xl" 
-            width="400"
-            alt="" >
-            
-
-        </div><br>
-    @endforeach --}}
+    <div></div><br><br><br><br><br>
     
     @foreach ($courses as $item)
     <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
@@ -99,6 +64,7 @@
         </div>
     </div>
     @endforeach
+        
     
     <footer class="site-footer">
         <div class="wrapper site-header__wrapper">

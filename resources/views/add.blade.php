@@ -31,10 +31,7 @@
         <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" ><br>
         <small>mp4,x-m4v</small><br><br>
 
-        <label for="voice">Voice:</label><br>
-        <input type="file" id="voice" name="voice" accept="audio/mp3,audio/mpeg" ><br>
-        <small>mp3,mpeg</small><br><br>
-
+       
         <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
 
         <input type="submit" value="Submit">
@@ -113,19 +110,7 @@
         text.style.display = "none";
       }
     }
-    function myFunctionvoice() {
-      // Get the checkbox
-      var checkBox = document.getElementById("myCheckvoice");
-      // Get the output text
-      var text = document.getElementById("voice");
-    
-      // If the checkbox is checked, display the output text
-      if (checkBox.checked == true){
-        text.style.display = "block";
-      } else {
-        text.style.display = "none";
-      }
-    }  
+
     </script>
 </head>
 
@@ -133,7 +118,7 @@
    
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-          <a href="#" class="brand">Simple</a>
+          <a href="/" class="brand">Simple</a>
           <nav class="nav">
             
             <ul class="nav__wrapper">
@@ -168,8 +153,6 @@
             <label for="video">Video:</label><input type="checkbox" id="myCheckvideo" onclick="myFunctionvideo()"><br>
             <input type="file" id="video" name="video"  style="display:none" accept="video/mp4,video/x-m4v,video/*" ><br>
     
-            <label for="voice">Voice:</label><input type="checkbox" id="myCheckvoice" onclick="myFunctionvoice()"><br>
-            <input type="file" id="voice" style="display:none" name="voice" accept="audio/mp3,audio/mpeg" ><br>
     
             <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
     
@@ -199,20 +182,14 @@
             width="250"
             alt=""><br>
         @if(isset($item->video))
-        <video controls width="280">
-                        
-            <source src="{{asset("videos/" . $item->video)}}"
+        <video width="300" controlsList="nodownload" controls>
+            <source src='{{asset("viidd/$item->video")}}'
                     type="video/mp4">
         
             Sorry, your browser doesn't support embedded videos.
         </video><br>
         @endif
-        @if(isset($item->voice))
-            <audio controls>
-                <source src="{{asset("voices/" . $item->voice)}}" type="audio/mpeg">
-            Your browser does not support the audio element.
-            </audio><br>
-        @endif
+        
         
 
     </div><br>
@@ -224,5 +201,6 @@
         </div>
     </form>
 
+    
 </body>
 </html>

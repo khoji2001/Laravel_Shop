@@ -54,7 +54,7 @@
    
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-          <a href="#" class="brand">Simple</a>
+          <a href="/" class="brand">Simple</a>
           <nav class="nav">
             
             <ul class="nav__wrapper">

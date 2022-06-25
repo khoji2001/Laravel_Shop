@@ -64,13 +64,7 @@
             @endswitch
             
             <div class="div">{{$item->subject}}</div><br>
-            <div class="div">{{$item->text}}</div><br>
-            @if(isset($item->voice))
-                <audio onseeking="CallAction1();" onseeked="CallAction2();"  controls>
-                    <source src="{{asset("voices/" . $item->voice)}}" type="audio/mpeg">
-                Your browser does not support the audio element.
-                </audio><br>
-            @endif
+          
 
             <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
             width="400"
@@ -105,6 +99,7 @@
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
 </head>
 
@@ -112,7 +107,7 @@
    
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-          <a href="#" class="brand">Simple</a>
+          <a href="/" class="brand">Simple</a>
           <nav class="nav">
             
             <ul class="nav__wrapper">
@@ -131,26 +126,27 @@
     @foreach ($sessions as $item)
     <div class="container">
         <div >{{$item->subject}}</div><br>
+        {{-- <div >{{asset("videos/" . $item->video)}}{{URL::asset("/videos/$item->video")}} </div><br> --}}
+
         <div >{{$item->text}}</div><br>
         <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
             width="800"
             height= "auto"
             alt=""><br>
         @if(isset($item->video))
-        <video controls width="800">
-                        
-            <source src="{{asset("videos/" . $item->video)}}"
+        {{-- https://videojs.com/getting-started/ --}}
+        {{-- https://github.com/imanghafoori1/laravel-video --}}
+        <video width="800" controlsList="nodownload" controls>
+            <source src='{{asset("viidd/$item->video")}}'
                     type="video/mp4">
         
             Sorry, your browser doesn't support embedded videos.
         </video><br>
+          
+
         @endif
-        @if(isset($item->voice))
-            <audio controls>
-                <source src="{{asset("voices/" . $item->voice)}}" type="audio/mpeg">
-            Your browser does not support the audio element.
-            </audio><br>
-        @endif
+   
+        
         
 
     </div><br>
@@ -158,4 +154,5 @@
 
 
 </body>
+
 </html>

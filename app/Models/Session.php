@@ -12,7 +12,6 @@ class Session extends Model
         'subject',
         'text',
         'video',
-        'voice',
         'image',
         'course_id'
     ];

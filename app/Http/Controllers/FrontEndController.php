@@ -89,5 +89,21 @@ class FrontEndController extends Controller
         Auth::logout();
         return redirect('/');
       }
+    public function search(Request $request) {
+    // dd($request->search);
+    $search = $request->search;
+    $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+    
+    return view('search',compact('courses','search'));
+    }
+
+    public function test(){
+        $courses = Course::all();
+        return view("test",compact("courses"));
+    }
+    public function vii(){
+        // $courses = Course::all();
+        return view("video");
+    }
 
 }

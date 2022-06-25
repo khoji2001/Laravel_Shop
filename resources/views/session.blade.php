@@ -63,9 +63,7 @@ function myFunctionimage() {
         <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" ><br>
         <small>mp4,x-m4v</small><br><br>
 
-        <label for="voice">Voice:</label><br>
-        <input type="file" id="voice" name="voice" accept="audio/mp3,audio/mpeg" ><br>
-        <small>mp3,mpeg</small><br><br>
+        
 
         <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
 
@@ -139,19 +137,7 @@ function myFunctionimage() {
         text.style.display = "none";
       }
     }
-    function myFunctionvoice() {
-      // Get the checkbox
-      var checkBox = document.getElementById("myCheckvoice");
-      // Get the output text
-      var text = document.getElementById("voice");
-    
-      // If the checkbox is checked, display the output text
-      if (checkBox.checked == true){
-        text.style.display = "block";
-      } else {
-        text.style.display = "none";
-      }
-    }  
+ 
     </script>
 </head>
 
@@ -194,8 +180,6 @@ function myFunctionimage() {
             <label for="video">Video:</label><input type="checkbox" id="myCheckvideo" onclick="myFunctionvideo()"><br>
             <input type="file" id="video" name="video"  style="display:none" accept="video/mp4,video/x-m4v,video/*" ><br>
     
-            <label for="voice">Voice:</label><input type="checkbox" id="myCheckvoice" onclick="myFunctionvoice()"><br>
-            <input type="file" id="voice" style="display:none" name="voice" accept="audio/mp3,audio/mpeg" ><br>
     
             <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
     
@@ -215,5 +199,7 @@ function myFunctionimage() {
         {{ session()->get('message') }}
     </div>
     @endif
+
+
 </body>
 </html>

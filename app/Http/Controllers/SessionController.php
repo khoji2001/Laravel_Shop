@@ -39,9 +39,9 @@ class SessionController extends Controller
     {
         $request->validate([
             'subject' => "required",
-            'video' => "max:1000000|mimes:mp4",
-            'voice' => "nullable|max:1000000|mimes:mp3"
-
+            'video' => "required_without_all:text,image|mimes:mp4",
+            "image" => 'required_without_all:video,text|mimes:png,jpg,jpeg',
+            "text" => 'required_without_all:video,image',
         ]);
 
         $data = $request->all();
@@ -55,12 +55,7 @@ class SessionController extends Controller
                     $request->video->move(public_path("videos"),$video);
                     $data['video'] = $video;
                     break;
-                case "voice":
-                    $voice = time() . "." . $request->voice->extension();
-                    $request->voice->move(public_path("voices"),$voice);
-                    $data['voice'] = $voice;
-
-                    break;
+                
                 case "image":
                     $image = time() . "." . $request->image->extension();
                     $request->image->move(public_path("images"),$image);

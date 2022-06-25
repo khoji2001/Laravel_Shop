@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('subject');
             $table->Longtext('text')->nullable()->change();
             $table->string('video')->nullable()->change();
-            $table->string('voice')->nullable()->change();
             $table->timestamps();
         });
     }
