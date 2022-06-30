@@ -39,29 +39,32 @@
     
 
     @foreach ($courses as $item)
-    <div class="container_n">
-        <div class="card">
-          <div class="card-header">
-            <div class="user">
-                {{-- <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" /> --}}
-                <div class="user-info">
-                  <h5>July Dec</h5>
-                  <small>{{date('d-m-Y', strtotime($item->updated_at))}}</small>
-                </div>
+    <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
+
+      <div class="container_n">
+          <div class="card">
+            <div class="card-header">
+              <div class="user">
+                  {{-- <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" /> --}}
+                  <div class="user-info">
+                    <h5>{{$item->user->username}}</h5>
+                    <small>{{date('d-m-Y', strtotime($item->updated_at))}}</small>
+                  </div>
+              </div>
+              <img src="{{asset("images/" . $item->cover)}}" alt="rover" >
             </div>
-            <img src="{{asset("images/" . $item->cover)}}" alt="rover" >
+            <div class="card-body_n">
+              {{-- <span class="tag tag-teal">Technology</span> --}}
+              <h4>
+                {{$item->subject}}
+              </h4><br>
+              <p>
+                  {{$item->description}}
+              </p>
+              
+            </div>
           </div>
-          <div class="card-body_n">
-            {{-- <span class="tag tag-teal">Technology</span> --}}
-            <h4>
-              {{$item->subject}}
-            </h4><br>
-            <p>
-                {{$item->description}}
-            </p>
-            
-          </div>
-        </div>
+      </div>
     </div>
     @endforeach
     @if($courses->isEmpty())

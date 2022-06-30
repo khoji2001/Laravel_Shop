@@ -100,7 +100,28 @@
     <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script>
+      function myFunction() {
+    // Get the checkbox
+    var checkBox = document.getElementById("myCheck");
+    // Get the output text
     
+    var label = document.getElementById("Prerequisites");
+
+
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+    
+      label.style.display = "block";
+
+    } else {
+      
+      label.style.display = "none"; 
+
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -121,18 +142,51 @@
         </div>
     </header>
     <div><br><br><br><br>
-    
 
+      {{-- ok{{$related}}--------{{$sessions}} --}}
+    {{-- @foreach ($sessions as $it)
+      <div class="container_s">
+        <a href="course/{{$it->id}}">{{$it->subejct}}op</a>
+      </div>
+    @endforeach --}}
+    <div class="container_lnss">
+      Prerequisites<input type="checkbox" id="myCheck" name="Prerequisites" onclick="myFunction()" >
+    </div>
+    <div id="Prerequisites" style="display:none;">
+      @if(!is_null($related))
+          @foreach ($related as $item)
+            <div class="container_lns">
+              <a style="color:rgb(150, 41, 41);   text-decoration: none;" href="{{ asset("course/$item->id") }}">{{$item->subject}}</a>
+            </div>
+          @endforeach
+      @else
+      
+        <div class="container_lns">
+          <a style="color:rgb(150, 41, 41);   text-decoration: none;" href="">Nothing!!!!!</a>
+        </div>
+      @endif
+    </div><hr>
+    <div class="container_lnss" style="  padding-left: 45%;font-weight: bold;
+    font-family:Times New Roman;
+    font-size: 40px; ">
+      Sessions
+    </div>
     @foreach ($sessions as $item)
-    <div class="container">
-        <div >{{$item->subject}}</div><br>
+    {{-- <img src="{{asset("images/" . $item->image)}}" class="image" 
+            
+            alt=""><br><br> --}}
+    <div class="count">{{ $loop->iteration }}</div>
+    <div class="container_s">
+        <div class="subject">{{$item->subject}}</div><br>
         {{-- <div >{{asset("videos/" . $item->video)}}{{URL::asset("/videos/$item->video")}} </div><br> --}}
-
-        <div >{{$item->text}}</div><br>
-        <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
+        {{-- course{{$course}}0000000000{{$related}} --}}
+        <div >{{$item->text}}</div><br><br>
+        <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl display: block;
+        margin-left: auto;
+        margin-right: auto;" 
             width="800"
             height= "auto"
-            alt=""><br>
+            alt=""><br><br>
         @if(isset($item->video))
         {{-- https://videojs.com/getting-started/ --}}
         {{-- https://github.com/imanghafoori1/laravel-video --}}

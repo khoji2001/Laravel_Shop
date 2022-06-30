@@ -13,9 +13,16 @@ class Course extends Model
         'subject',
         'cover',
         'description',
-        'user_id'
+        'user_id',
+        'related_id'
     ];
-    // public function user(){
-    //     return $this->hasMany(User::class,"id","user_id"); 
-    // }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function related()
+    {
+        return $this->belongsToMany(Course::class, 'related_course_pivot','post_id', 'related_id');
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class FrontEndController extends Controller
 {
@@ -97,9 +98,27 @@ class FrontEndController extends Controller
     return view('search',compact('courses','search'));
     }
 
+    public function search_check(Request $request) {
+        // dd($request->search);
+        $id = $request->query('id');
+        $search = $request->search;
+        $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
+
+        return view('search_check',compact('courses','search','id',"leadIds"));
+        }
+    public function search_check_get(Request $request) {
+        // dd($request->search);
+        $id = $request->query('id');
+        $search = $request->search;
+        $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
+
+        return view("search_check",compact('id','courses','search',"leadIds"));
+        }
+
     public function test(){
-        $courses = Course::all();
-        return view("test",compact("courses"));
+        return view("test");
     }
     public function vii(){
         // $courses = Course::all();

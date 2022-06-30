@@ -9,9 +9,12 @@
   
   .site-header {
     position: fixed;/* fixed */
-    background-color: #0b3d91;
+    background-color: #0b3d91;/* 0b3d91 */
+    /* background: linear-gradient(90deg, #000 50%, #fff	 50%); */
     top: 0; 
-    width: 100%;  }
+    width: 100%;
+    z-index: 1;
+  }
 
   .site-footer {
     position: relative;

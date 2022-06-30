@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Owenoj\LaravelGetId3\GetId3;
 
 use App\Models\Session;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class SessionController extends Controller
     {
         // dd($request);
         $id = $request->query('id');
+        
         return view("session",compact('id'));
     }
 
@@ -37,14 +39,26 @@ class SessionController extends Controller
      */
     public function store(Request $request )
     {
+        // https://github.com/Owen-oj/laravel-getid3
         $request->validate([
             'subject' => "required",
-            'video' => "required_without_all:text,image|mimes:mp4",
             "image" => 'required_without_all:video,text|mimes:png,jpg,jpeg',
             "text" => 'required_without_all:video,image',
+            'video' => [
+                'required_without_all:text,image',
+                'mimetypes:video/mp4',
+                function ($attribute, $value, $fail) {
+                    $video = new GetId3($value);
+        
+                    if ($video->getPlaytimeSeconds() > 62) {
+                        $fail('The video must be shorter than 60 seconds.');
+                    }
+                }
+            ]
         ]);
 
         $data = $request->all();
+        // dd($data);
         $int = (int) filter_var($data['course_id'], FILTER_SANITIZE_NUMBER_INT);
         $data['course_id'] = $int;
         $keys = array_keys($data);
