@@ -44,19 +44,34 @@ class CourseController extends Controller
     
     public function store(Request $request){
         // dd($request->all());
+        $input = $request->all();
+
         $request->validate([
             'subject' => "required",
-            'image' => "required|max:10000|mimes:jpg,png,jpeg",
+            // 'image' => "required|max:10000|mimes:jpg,png,jpeg",
         ]);
-        $cover = time() . "." . $request->image->extension();
-
-        $request->image->move(public_path("images"),$cover);
+        // $cover = time() . "." . $request->image->extension();
+        // $request->validate([
+        //     'imageUpload' => "required|max:10000|mimes:jpg,png,jpeg",
+        // ]);
+        // $cover = time() . "." . $request->imageUpload->extension();
+        $folderPath = public_path('images/');
+        $image_parts = explode(";base64,", $input['base64image']);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        // dd($image_base64);
+        // $request->base64image->move(public_path("images"),$cover);
+        $filename = time() . '.'. $image_type;
+        $file =$folderPath.$filename;
+        file_put_contents($file, $image_base64);
+        // $request->image->move(public_path("images"),$cover);
         // dd($request->all());
         if($request->Prerequisites=="on"){
             $course = Course::create([
                 'subject' => $request->subject,
                 'description' => $request->description,
-                'cover' => $cover,
+                'cover' => $filename,
                 'user_id' => auth()->user()->id,
                 
             ]);
@@ -68,7 +83,7 @@ class CourseController extends Controller
             $course = Course::create([
                 'subject' => $request->subject,
                 'description' => $request->description,
-                'cover' => $cover,
+                'cover' => $filename,
                 'user_id' => auth()->user()->id,
                 
             ]);
