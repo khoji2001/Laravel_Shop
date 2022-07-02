@@ -118,11 +118,32 @@ class FrontEndController extends Controller
         }
 
     public function test(){
-        return view("test");
+        return view("testt");
     }
     public function vii(){
         // $courses = Course::all();
         return view("video");
     }
 
+    public function too(Request $request){
+        // dd($request->all());
+        $input = $request->all();
+        $request->validate([
+            'imageUpload' => "required|max:10000|mimes:jpg,png,jpeg",
+        ]);
+        $cover = time() . "." . $request->imageUpload->extension();
+        
+        $folderPath = public_path('images/');
+        $image_parts = explode(";base64,", $input['base64image']);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        // dd($image_base64);
+        // $request->base64image->move(public_path("images"),$cover);
+        $filename = time() . '.'. $image_type;
+        $file =$folderPath.$filename;
+        file_put_contents($file, $image_base64);
+        dd($file);
+        return $cover;
+    }
 }

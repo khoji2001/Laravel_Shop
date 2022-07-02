@@ -1,10 +1,10 @@
 <?php
 
+use Iman\Streamer\VideoStreamer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\FrontEndController;
-use Iman\Streamer\VideoStreamer;
 
 
 /*
@@ -57,12 +57,4 @@ Route::post("/search/check",[FrontEndController::class,"search_check"]);
 
 Route::post("/add/related",[CourseController::class,"add_related"])->name("add_related");
 
-
-
-
-
-
-
-
-
-
+Route::post("/too",[FrontEndController::class,"too"]);

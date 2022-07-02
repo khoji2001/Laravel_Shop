@@ -20,7 +20,7 @@ class CourseController extends Controller
     }
     public function add_related(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $data = $request->all();
         $course_id = (int) filter_var($data['course_id'], FILTER_SANITIZE_NUMBER_INT);
         $related_id = (int) filter_var($data['related_id'], FILTER_SANITIZE_NUMBER_INT);
@@ -43,14 +43,14 @@ class CourseController extends Controller
     }
     
     public function store(Request $request){
-        
+        // dd($request->all());
         $request->validate([
             'subject' => "required",
-            'cover' => "required|max:10000|mimes:jpg,png,jpeg",
+            'image' => "required|max:10000|mimes:jpg,png,jpeg",
         ]);
-        $cover = time() . "." . $request->cover->extension();
+        $cover = time() . "." . $request->image->extension();
 
-        $request->cover->move(public_path("images"),$cover);
+        $request->image->move(public_path("images"),$cover);
         // dd($request->all());
         if($request->Prerequisites=="on"){
             $course = Course::create([

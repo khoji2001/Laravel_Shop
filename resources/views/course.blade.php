@@ -46,32 +46,9 @@
     <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-        function myFunction() {
-      // Get the checkbox
-      var checkBox = document.getElementById("myCheck");
-      // Get the output text
-      var text = document.getElementById("select");
-      var btn = document.getElementById("btn");
-      var label = document.getElementById("label");
-
-
-    
-      // If the checkbox is checked, display the output text
-      if (checkBox.checked == true){
-        text.style.display = "block";
-        btn.style.display = "block";
-        label.style.display = "block";
-
-      } else {
-        text.style.display = "none";
-        btn.style.display = "none";
-        label.style.display = "none"; 
-
-      }
-    }
-    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
 </head>
 
 <body>
@@ -94,7 +71,7 @@
     <div><br><br><br><br>
     
     <div class="container_l">
-        <form method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
+        <form id="myform" name="myform" method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
             @csrf
             <label for="subject">Subject:</label><br>
             <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters"><br><br>
@@ -103,23 +80,18 @@
             <input type="text" id="description" maxlength="100" placeholder="100 characters" name="description"><br><br>
     
             <label for="cover">Cover:</label><br>
-            <input type="file" id="cover" name="cover" accept="image/png, image/jpeg , image/jpg"><br><br><br>
+            <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br>
             
+            
+
             <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br>
             {{-- onclick="myFunction()" --}}
-            <input type="submit" value="Submit">
+            
+            <input type="submit" value="Submit" id="form_sub">
         </form>
     </div><br><br>
 
-    {{-- <div class="container_ln">
-        <form method="get" action={{"/search/check"}} >
-            @csrf
-            <label style="display: none; font-size: 20px;" id="label" for="search" >search your course:</label>
-            <input  type="text" name="search" id="select" placeholder="search..." style="display: none;  width: 400px; 
-            margin-bottom: 0px; inline-block float:right;">
-            <input  id="btn"  type="submit" value=&#x1F50D; style="display:none; margin-bottom: 16px; " >
-        </form>  
-    </div> --}}
+
 
     <ul>
         @foreach ($errors->all() as $error)
@@ -131,7 +103,10 @@
         {{ session()->get('message') }}
     </div>
     @endif
+    
 
     
+
+
 </body>
 </html>
