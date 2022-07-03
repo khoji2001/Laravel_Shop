@@ -43,14 +43,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-<style>
+    {{-- <style>
   body{
     background-color: #dfdfdf;
   }
@@ -150,7 +151,7 @@
     max-width: 100%;
 }
 
-</style>
+</style> --}}
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
 
@@ -195,9 +196,9 @@
             <input type="text" id="description" maxlength="100" placeholder="100 characters" name="description"><br><br>
     
             <label for="cover">Cover:</label><br>
-            <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br>
+            {{-- <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br> --}}
             
-            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" />
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br><br>
             <input type="hidden" name="base64image" name="base64image" id="base64image">
             
 
@@ -222,8 +223,6 @@
         </form>
     </div><br><br>
 
-
-
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -234,7 +233,8 @@
         {{ session()->get('message') }}
     </div>
     @endif
-    <div class="modal fade bd-example-modal-lg imagecrop" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+    <div class="modal fade bd-example-modal-lg imagecrop " data-keyboard="false" data-backdrop="static" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">

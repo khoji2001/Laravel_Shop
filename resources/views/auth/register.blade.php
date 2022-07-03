@@ -47,8 +47,7 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="{{ old('email') }}"><br>
             
-            <label for="phone">Phone:</label><br>
-            <input type="text" id="phone" name="phone" value="{{ old('phone') }}"><br>
+            
             
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password"><br>

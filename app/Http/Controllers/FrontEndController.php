@@ -66,11 +66,9 @@ class FrontEndController extends Controller
             'username' => 'required|max:200|unique:users,username',
             'email' => 'required|email|max:200|unique:users,email',
             'password' => 'required_with:password_confirmation|same:password_confirmation',
-            'phone' => 'required|min:8|max:12|unique:users,phone',
             'password_confirmation' => 'required'
         ]);
         $user = User::create([
-            'phone' => $request->phone,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password) ,
