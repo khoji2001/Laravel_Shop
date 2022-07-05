@@ -58,3 +58,18 @@ Route::post("/search/check",[FrontEndController::class,"search_check"]);
 Route::post("/add/related",[CourseController::class,"add_related"])->name("add_related");
 
 Route::post("/too",[FrontEndController::class,"too"]);
+
+
+Route::group(['middleware' => ['auth']], function () { 
+    Route::get("/api/session/",[SessionController::class,"index"]);
+    Route::post("/api/session",[SessionController::class,"store"]);
+    Route::get("/api/session/add/{id}",[SessionController::class,"show"]);
+    
+    
+    //course
+    Route::get("/api/course",[CourseController::class,"index"])->name('course');
+    Route::post("/api/course",[CourseController::class,"store"]);
+    
+});
+Route::get("/course/{id}",[CourseController::class,"show"]);
+
