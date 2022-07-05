@@ -7,6 +7,8 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File; 
+
 use DB;
 
 class FrontEndController extends Controller
@@ -21,7 +23,14 @@ class FrontEndController extends Controller
         // {
         //     return "home";
         // }
-        $courses = Course::all();
+        
+        
+        // $data =  DB::select('select cover from courses');
+        // // dd($data);
+        // File::delete($data.first);
+
+        // $courses = Course::where("first_session",1)->delete();
+        $courses = Course::where("first_session",1)->get();
         // dd(auth()->user());
         return view('home',compact("courses"));
     }

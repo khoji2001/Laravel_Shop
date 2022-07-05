@@ -14,7 +14,6 @@ class Course extends Model
         'cover',
         'description',
         'user_id',
-        'related_id'
     ];
     public function user() {
         return $this->belongsTo(User::class);

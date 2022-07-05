@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Owenoj\LaravelGetId3\GetId3;
+use App\Models\Course;
 
 use App\Models\Session;
 use Illuminate\Http\Request;
+use Owenoj\LaravelGetId3\GetId3;
 
 class SessionController extends Controller
 {
@@ -79,7 +80,9 @@ class SessionController extends Controller
         }
         
         $session = Session::create($data);
-
+        $course_change = Course::where("id",$data['course_id'])->first();
+        $course_change->first_session = 1;
+        $course_change->save();
         return redirect("api/session/add/{$int}");
 
         
