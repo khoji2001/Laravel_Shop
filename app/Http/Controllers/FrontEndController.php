@@ -118,6 +118,7 @@ class FrontEndController extends Controller
         // dd($request->search);
         $id = $request->query('id');
         $search = $request->search;
+        
         $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
         $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
 

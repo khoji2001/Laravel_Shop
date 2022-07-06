@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id')->nullable();
+            // $table->unsignedBigInteger('course_id')->nullable();
 
         });
     }

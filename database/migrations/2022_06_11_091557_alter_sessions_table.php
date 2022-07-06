@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('sessions', function (Blueprint $table){
-            $table->Longtext('text')->nullable()->change();
-            $table->string('video')->nullable()->change();
-        });
+        // Schema::table('sessions', function (Blueprint $table){
+        //     $table->Longtext('text')->nullable()->change();
+        //     $table->string('video')->nullable()->change();
+        // });
     }
 
     /**
