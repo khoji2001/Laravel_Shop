@@ -176,7 +176,7 @@
         </div>
     </header>
     <div><br><br><br>
-    @if(Session::get('message'))
+    {{-- @if(Session::get('message'))
       <div class="alert alert-primary" role="alert">
         {{ Session::get('message') }}
       </div>
@@ -185,7 +185,7 @@
       <div class="alert alert-danger" role="alert">
         {{ Session::get('error') }}
       </div>
-    @endif
+    @endif --}}
     
     <div class="container_l">
         <form id="myform" name="myform" method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
@@ -201,7 +201,7 @@
             
             <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br><br>
             <input type="hidden" name="base64image" name="base64image" id="base64image">
-            
+            {{-- <img id="blah" src="#" alt="your image" /> --}}
 
             <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br>
             {{-- onclick="myFunction()" --}}
@@ -332,6 +332,8 @@
   }
 });
 </script>
+
+
     
 
 

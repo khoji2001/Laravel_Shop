@@ -126,7 +126,7 @@ class FrontEndController extends Controller
         }
 
     public function test(){
-        return view("testt");
+        return view("test");
     }
     public function vii(){
         // $courses = Course::all();

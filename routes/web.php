@@ -42,7 +42,6 @@ Route::get("/course/{id}",[CourseController::class,"show"]);
 //search
 Route::post("/search",[FrontEndController::class,"search"]);
 
-Route::get("/test",[FrontEndController::class,"test"]);
 
 
 // https://github.com/imanghafoori1/laravel-video
@@ -72,4 +71,15 @@ Route::group(['middleware' => ['auth']], function () {
     
 });
 Route::get("/course/{id}",[CourseController::class,"show"]);
+
+Route::post("api/test",[CourseController::class,"test_store"]);
+Route::post("api/test/sessions",[CourseController::class,"test_store_ses"]);
+
+Route::get("test",[FrontEndController::class,"test"]);
+
+// Route::get("api/test",[FrontEndController::class,"test"]);
+
+// Route::get("api/test/sessions",[FrontEndController::class,"test"]);
+
+
 

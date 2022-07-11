@@ -83,13 +83,13 @@ class SessionController extends Controller
         $course_change = Course::where("id",$data['course_id'])->first();
         $course_change->first_session = 1;
         $course_change->save();
-        $wrong_course = Course::where("first_session",0)->get();
-        $file_path = public_path("images");
-        foreach($wrong_course as $item){
-            $path = public_path()."/images/".$item->cover;
-            unlink($path);
-            $item->delete();
-        }
+        // $wrong_course = Course::where("first_session",0)->get();
+        // $file_path = public_path("images");
+        // foreach($wrong_course as $item){
+        //     $path = public_path()."/images/".$item->cover;
+        //     unlink($path);
+        //     $item->delete();
+        // }
         return redirect("api/session/add/{$int}");
 
         
