@@ -195,8 +195,9 @@
     </div><br>
     @endforeach
 
-    <form action="/">
+    <form action="/api/finish" method="post">
         <div class="containerbut">
+            <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
             <input type="submit" value="finish" />
         </div>
     </form>

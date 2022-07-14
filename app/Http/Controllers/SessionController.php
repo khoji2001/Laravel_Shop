@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Models\Session;
 use Illuminate\Http\Request;
 use Owenoj\LaravelGetId3\GetId3;
+use Illuminate\Support\Facades\File; 
+
 
 class SessionController extends Controller
 {
@@ -80,20 +82,60 @@ class SessionController extends Controller
         }
         
         $session = Session::create($data);
-        $course_change = Course::where("id",$data['course_id'])->first();
-        $course_change->first_session = 1;
-        $course_change->save();
-        // $wrong_course = Course::where("first_session",0)->get();
-        // $file_path = public_path("images");
-        // foreach($wrong_course as $item){
-        //     $path = public_path()."/images/".$item->cover;
-        //     unlink($path);
-        //     $item->delete();
-        // }
+        
         return redirect("api/session/add/{$int}");
 
         
       
+    }
+
+    public function finish(Request $request)
+    {
+        // dd($request->course_id);
+        $data = $request->all();
+        $id = $data['course_id'];
+        $course_change = Course::where("id",$id)->first();
+        // dd($course_change);
+        $course_change->first_session = 1;
+        $course_change->save();
+        $wrong_course = Course::where("first_session",0)->get();
+        $img_del =[];
+        $video_del =[];
+
+        // $img_del = ["/Users/khoji/Desktop/Laravel_Shop/public/images/1657784445.jpg","sadsad","dsadas"];
+        // dd($img_del);
+        // File::delete($img_del);
+        foreach($wrong_course as $item){
+            $path_img = public_path()."/images/";
+            $path_video = public_path()."/videos/";
+
+            // dd($path_img);
+            // unlink($path);
+            File::delete($path_img.$item->cover);
+            $sessions = Session::where('course_id',$item->id)->pluck('image')->toArray();
+            // dd($sessions);
+            // File::delete($path_img.$item->cover);
+            foreach($sessions as $image)
+            if(!is_null($image)){
+                $img_del[] = $path_img.$image;
+            }
+            $vid = Session::where('course_id',$item ->id)->pluck('video')->toArray();
+            foreach($vid as $vi)
+            if(!is_null($vi)){
+                $video_del[] = $path_video.$vi;
+            }
+            
+            // dd($sessions);
+            $item->delete();
+        }
+        // dd($img_del);
+        // File::delete($path_img.$img_del);
+        File::delete($img_del);
+        File::delete($video_del);
+
+        // dd($video_del);
+        
+        return redirect("/");
     }
 
     /**

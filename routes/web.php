@@ -82,4 +82,5 @@ Route::get("test",[FrontEndController::class,"test"]);
 // Route::get("api/test/sessions",[FrontEndController::class,"test"]);
 
 
+Route::post("/api/finish",[SessionController::class,"finish"]);
 

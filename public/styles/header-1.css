@@ -19,8 +19,12 @@
   .site-footer {
     position: relative;
     background-color: #132e5e;
-    bottom: 0;
-    width: 100%;  }
+    bottom: 0%;
+    width: 100%;
+    /* clear: both; */
+    /* height: 400px; */
+    /* margin-top:100%; */
+  }
     
   .site-header__wrapper {
     padding-top: 1rem;

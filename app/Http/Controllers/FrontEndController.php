@@ -117,6 +117,7 @@ class FrontEndController extends Controller
     public function search_check_get(Request $request) {
         // dd($request->search);
         $id = $request->query('id');
+        // dd($id);
         $search = $request->search;
         
         $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
