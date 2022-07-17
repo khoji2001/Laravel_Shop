@@ -142,7 +142,7 @@
             <label  for="text">Text:</label>
             <input type="checkbox" id="myCheck" onclick="myFunction()"><br>
             
-            <textarea id="text" name="text" maxlength="350" style="display:none; height:200px; font-size: 18px; font-family:Times, serif;" placeholder="300 characters" ></textarea><br>
+            <textarea id="text" name="text" maxlength="350" style="display:none; height:200px; font-size: 18px; font-family:Times, serif;" placeholder="350 characters" ></textarea><br>
             {{-- <input type="text" id="text" name="text" style="display:none" ><br> --}}
     
             <label for="image">Image:</label><input type="checkbox" id="myCheckimage" onclick="myFunctionimage()"><br>
@@ -160,23 +160,38 @@
     
             <input type="submit" value="Submit">
         </form><br><br>
+        <div style="color: #ff0000;" >
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+        
     
-    </div><br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+    </div>
+    
+    
+    <div class="countt">
+        <form action="/api/finish" method="post">
+            <div class="containerbut">
+                <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+                <input type="submit" style="background-color: rgb(4, 123, 4)" value="Publish" />
+            </div>
+        </form>
+    </div>
 
-    @if(session()->has('message'))
+    {{-- @if(session()->has('message'))
     <div class="alert alert-success">
         {{ session()->get('message') }}
     </div>
-    @endif
+    @endif --}}
 
     @foreach ($sessions as $item)
-    <div class="container">
-        <div >{{$item->subject}}</div><br>
+    <div class="count">{{ $loop->iteration }}</div>
+
+    <div class="container_s">
+        <div class="subject" >{{$item->subject}}</div><br>
         <div >{{$item->text}}</div><br>
         <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
             width="250"
@@ -195,12 +210,14 @@
     </div><br>
     @endforeach
 
+    {{-- <div class="count">
     <form action="/api/finish" method="post">
         <div class="containerbut">
             <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-            <input type="submit" value="finish" />
+            <input type="submit" value="Publish" />
         </div>
     </form>
+    </div> --}}
 
     
     

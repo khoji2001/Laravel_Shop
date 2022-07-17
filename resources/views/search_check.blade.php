@@ -36,7 +36,7 @@
     <a href="{{ route('register') }}">register<a> --}}
     <div></div><br><br><br><br><br><br>
     <div class="container_lns">
-        <form action="{{ asset('api/session') }}" method="get">
+        <form action="{{ asset('/') }}" method="get">
             <input type = "hidden" id="id" name = "id" value = {{(int)$id}}/>
             <input type="submit" style="background-color: green" value="complete">
         </form>

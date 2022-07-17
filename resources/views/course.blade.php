@@ -203,7 +203,7 @@
             <input type="hidden" name="base64image" name="base64image" id="base64image">
             {{-- <img id="blah" src="#" alt="your image" /> --}}
 
-            <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br>
+            {{-- <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br> --}}
             {{-- onclick="myFunction()" --}}
             <div class="avatar-preview container2">
                 @php

@@ -24,7 +24,7 @@ Route::get("/api/login",[FrontEndController::class,"login"])->name("login");
 Route::post("/api/login",[FrontEndController::class,"login_submit"]);
 Route::get("/api/register",[FrontEndController::class,"register"])->name('register');
 Route::post("/api/register",[FrontEndController::class,"register_submit"]);
-Route::get('logout', [FrontEndController::class,"logout"])->name("logout");
+// Route::get('logout', [FrontEndController::class,"logout"])->name("logout");
 
 
 //session
@@ -50,9 +50,7 @@ Route::get('/viidd/{video}', function ($video) {
     VideoStreamer::streamFile($path);
 });
 
-Route::get("/search/check",[FrontEndController::class,"search_check_get"]);
 
-Route::post("/search/check",[FrontEndController::class,"search_check"]);
 
 Route::post("/add/related",[CourseController::class,"add_related"])->name("add_related");
 
@@ -68,6 +66,10 @@ Route::group(['middleware' => ['auth']], function () {
     //course
     Route::get("/api/course",[CourseController::class,"index"])->name('course');
     Route::post("/api/course",[CourseController::class,"store"]);
+
+    Route::get("/search/check",[FrontEndController::class,"search_check_get"]);
+
+    Route::post("/search/check",[FrontEndController::class,"search_check"]);
     
 });
 Route::get("/course/{id}",[CourseController::class,"show"]);
@@ -83,4 +85,12 @@ Route::get("test",[FrontEndController::class,"test"]);
 
 
 Route::post("/api/finish",[SessionController::class,"finish"]);
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+    Route::get('logout', [FrontEndController::class,"logout"])->name("logout");
+    Route::get('/',[FrontEndController::class,"index"])->name("home");
+    
+    
+
+});
 

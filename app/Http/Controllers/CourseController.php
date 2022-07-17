@@ -71,28 +71,28 @@ class CourseController extends Controller
         file_put_contents($file, $image_base64);
         // $request->image->move(public_path("images"),$cover);
         // dd($request->all());
-        if($request->Prerequisites=="on"){
-            $course = Course::create([
-                'subject' => $request->subject,
-                'description' => $request->description,
-                'cover' => $filename,
-                'user_id' => auth()->user()->id,
+        // if($request->Prerequisites=="on"){
+        //     $course = Course::create([
+        //         'subject' => $request->subject,
+        //         'description' => $request->description,
+        //         'cover' => $filename,
+        //         'user_id' => auth()->user()->id,
                 
-            ]);
-            return redirect("search/check?id=$course->id");
-            // $course->related()->attach([2,3,4]);
-            // return "on";
+        //     ]);
+        //     return redirect("search/check?id=$course->id");
+        //     // $course->related()->attach([2,3,4]);
+        //     // return "on";
             
-        }else{
-            $course = Course::create([
-                'subject' => $request->subject,
-                'description' => $request->description,
-                'cover' => $filename,
-                'user_id' => auth()->user()->id,
-                
-            ]);
-            return redirect("api/session?id=$course->id");
-        }
+        // }else{
+        $course = Course::create([
+            'subject' => $request->subject,
+            'description' => $request->description,
+            'cover' => $filename,
+            'user_id' => auth()->user()->id,
+            
+        ]);
+        return redirect("api/session?id=$course->id");
+        
     
     }
     public function test_store(Request $request){

@@ -109,7 +109,9 @@ class FrontEndController extends Controller
         // dd($request->search);
         $id = $request->query('id');
         $search = $request->search;
-        $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        $courses = Course::where('id',"!=", (int)$id)->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->get();
+
+        // $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->where('id', '!=' , $id)->get();
         $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
 
         return view('search_check',compact('courses','search','id',"leadIds"));
@@ -117,10 +119,15 @@ class FrontEndController extends Controller
     public function search_check_get(Request $request) {
         // dd($request->search);
         $id = $request->query('id');
-        // dd($id);
+        // dd((int)$id);
         $search = $request->search;
         
-        $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        // $courses = Course::where('id',"!=", 13)->orWhere('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
+        $courses = Course::where('id',"!=", (int)$id)->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->get();
+        // dd($courses);
+
+        // $courses->permissions()->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->get();
+        // dd($courses);
         $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
 
         return view("search_check",compact('id','courses','search',"leadIds"));

@@ -46,7 +46,7 @@ class SessionController extends Controller
         $request->validate([
             'subject' => "required",
             "image" => 'required_without_all:video,text|mimes:png,jpg,jpeg',
-            "text" => 'required_without_all:video,image',
+            "text" => 'required_without_all:video,image|max:350',
             'video' => [
                 'required_without_all:text,image',
                 'mimetypes:video/mp4',
@@ -93,8 +93,8 @@ class SessionController extends Controller
     {
         // dd($request->course_id);
         $data = $request->all();
-        $id = $data['course_id'];
-        $course_change = Course::where("id",$id)->first();
+        // dd($data["course_id"]);
+        $course_change = Course::where("id",$data['course_id'])->first();
         // dd($course_change);
         $course_change->first_session = 1;
         $course_change->save();
@@ -103,7 +103,7 @@ class SessionController extends Controller
         $video_del =[];
 
         // $img_del = ["/Users/khoji/Desktop/Laravel_Shop/public/images/1657784445.jpg","sadsad","dsadas"];
-        // dd($img_del);
+        // dd($wrong_course);
         // File::delete($img_del);
         foreach($wrong_course as $item){
             $path_img = public_path()."/images/";
@@ -135,7 +135,7 @@ class SessionController extends Controller
 
         // dd($video_del);
         
-        return redirect("/");
+        return redirect("search/check?id=$course_change->id");;
     }
 
     /**

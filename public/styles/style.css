@@ -265,11 +265,24 @@ input[type=submit]:hover {
   padding-bottom:10px;
 }
 .count {
+  font-weight: bold;
+
   margin: auto;
   width: 50%;
   font-size: 40px;
   /* border-b: 3px solid rgb(32, 11, 134); */
   padding: 10px;
+  text-align: center;
+
+}
+.countt {
+  font-weight: bold;
+
+  margin: auto;
+  width: 50%;
+  font-size: 40px;
+  /* border-b: 3px solid rgb(32, 11, 134); */
+  /* padding: 10px; */
   text-align: center;
 
 }

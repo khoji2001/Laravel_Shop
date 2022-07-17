@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- <meta http-equiv="refresh" content="5" > --}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +13,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+{{-- <style>
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style> --}}
 
 <body>
     <header class="site-header">
@@ -70,7 +93,8 @@
 
         </div><br>
     @endforeach --}}
-    
+    {{-- <div id="loading" class="loader"></div> --}}
+
     @foreach ($courses as $item)
     <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
         <div class="container_n">
@@ -113,6 +137,10 @@
           </div>
     </footer>
 
-
+{{-- <script>
+    $(window).load(function() {
+        $('#loading').hide();
+    });
+</script> --}}
 </body>
 </html>
