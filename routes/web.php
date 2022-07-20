@@ -78,6 +78,8 @@ Route::post("api/test",[CourseController::class,"test_store"]);
 Route::post("api/test/sessions",[CourseController::class,"test_store_ses"]);
 
 Route::get("test",[FrontEndController::class,"test"]);
+Route::get("boot",[FrontEndController::class,"boot"]);
+
 
 // Route::get("api/test",[FrontEndController::class,"test"]);
 
@@ -85,6 +87,8 @@ Route::get("test",[FrontEndController::class,"test"]);
 
 
 Route::post("/api/finish",[SessionController::class,"finish"]);
+Route::post("/api/leave",[SessionController::class,"leave"]);
+
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('logout', [FrontEndController::class,"logout"])->name("logout");

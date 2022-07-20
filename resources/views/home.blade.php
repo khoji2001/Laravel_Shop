@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <link rel="stylesheet" href="styles/reset.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/header-1.css" />
@@ -137,10 +138,6 @@
           </div>
     </footer>
 
-{{-- <script>
-    $(window).load(function() {
-        $('#loading').hide();
-    });
-</script> --}}
+
 </body>
 </html>

@@ -184,4 +184,51 @@ class SessionController extends Controller
     {
         //
     }
+
+    public function leave(Request $request)
+    {
+        // dd($request->course_id);
+        $data = $request->all();
+        // dd($data["course_id"]);
+        
+        $wrong_course = Course::where("first_session",0)->get();
+        $img_del =[];
+        $video_del =[];
+
+        // $img_del = ["/Users/khoji/Desktop/Laravel_Shop/public/images/1657784445.jpg","sadsad","dsadas"];
+        // dd($wrong_course);
+        // File::delete($img_del);
+        foreach($wrong_course as $item){
+            $path_img = public_path()."/images/";
+            $path_video = public_path()."/videos/";
+
+            // dd($path_img);
+            // unlink($path);
+            File::delete($path_img.$item->cover);
+            $sessions = Session::where('course_id',$item->id)->pluck('image')->toArray();
+            // dd($sessions);
+            // File::delete($path_img.$item->cover);
+            foreach($sessions as $image)
+            if(!is_null($image)){
+                $img_del[] = $path_img.$image;
+            }
+            $vid = Session::where('course_id',$item ->id)->pluck('video')->toArray();
+            foreach($vid as $vi)
+            if(!is_null($vi)){
+                $video_del[] = $path_video.$vi;
+            }
+            
+            // dd($sessions);
+            $item->delete();
+        }
+        // dd($img_del);
+        // File::delete($path_img.$img_del);
+        File::delete($img_del);
+        File::delete($video_del);
+
+        // dd($video_del);
+        
+        return redirect("/");;
+    }
+
 }

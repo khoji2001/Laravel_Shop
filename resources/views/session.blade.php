@@ -199,6 +199,14 @@ function myFunctionimage() {
         {{ session()->get('message') }}
     </div>
     @endif
+    <div style="" class="countt">
+      <form action="/api/leave" method="post">
+          <div class="containerbut">
+              <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+              <input type="submit" style="background-color: rgb(199, 23, 23)" value="Leave" />
+          </div>
+      </form>
+    </div>
 
 
 </body>

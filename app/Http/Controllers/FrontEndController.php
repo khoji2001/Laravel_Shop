@@ -30,6 +30,7 @@ class FrontEndController extends Controller
         // File::delete($data.first);
 
         // $courses = Course::where("first_session",1)->delete();
+        
         $courses = Course::where("first_session",1)->get();
         // dd(auth()->user());
         return view('home',compact("courses"));
@@ -135,6 +136,9 @@ class FrontEndController extends Controller
 
     public function test(){
         return view("test");
+    }
+    public function boot(){
+        return view("boot");
     }
     public function vii(){
         // $courses = Course::all();

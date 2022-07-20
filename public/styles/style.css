@@ -277,13 +277,27 @@ input[type=submit]:hover {
 }
 .countt {
   font-weight: bold;
-
+  /* horizental-align: middle; */
   margin: auto;
-  width: 50%;
+  padding-left: 41.8%;
+  /* gap: 1px;  */
+  /* width: 10%; */
+
+  display: flex;
   font-size: 40px;
   /* border-b: 3px solid rgb(32, 11, 134); */
   /* padding: 10px; */
   text-align: center;
+
+}
+.counttt {
+  font-weight: bold;
+
+  /* width: 50%; */
+  font-size: 40px;
+  /* border-b: 3px solid rgb(32, 11, 134); */
+  padding: 10px;
+  text-align: right;
 
 }
 .image{

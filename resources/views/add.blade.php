@@ -179,7 +179,16 @@
                 <input type="submit" style="background-color: rgb(4, 123, 4)" value="Publish" />
             </div>
         </form>
+        <form action="/api/leave" method="post">
+            <div class="containerbut">
+                <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+                <input type="submit" style="background-color: rgb(199, 23, 23)" value="Leave" />
+            </div>
+        </form>
     </div>
+    {{-- <div style="" class="countt">
+        
+      </div> --}}
 
     {{-- @if(session()->has('message'))
     <div class="alert alert-success">
