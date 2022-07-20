@@ -8,11 +8,13 @@
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <link rel="stylesheet" href="styles/reset.min.css" />
+    {{-- <link rel="stylesheet" href="styles/reset.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/header-1.css" />
+    <link rel="stylesheet" href="styles/header-1.css" /> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 {{-- <style>
     .loader {
@@ -38,15 +40,14 @@
 </style> --}}
 
 <body>
-    <header class="site-header">
+    {{-- <header class="site-header">
         <div class="wrapper site-header__wrapper">
           <a href="/" class="brand">Simple</a>
           <nav class="nav">
             
             
             <ul class="nav__wrapper">
-              {{-- <li class="nav__item"><a href="#">Home</a></li> --}}
-                {{-- search          --}}
+              
                 <form method="post" action={{"/search"}} >
                     @csrf
                     <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
@@ -76,33 +77,136 @@
             </ul>
           </nav>
         </div>
-    </header>
-    {{-- <a href="{{ route('login') }}">login<a><br>
-    <a href="{{ route('register') }}">register<a> --}}
-    <div></div><br><br><br><br><br><br>
+    </header> --}}
+
+    {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand  d-flex w-50 mr-auto" href="#">Simple</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0 ">
+                <form class="d-flex" role="search" method="post" action={{"/search"}}>
+                    @csrf
+                  <input name="search" id="search"  class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+              
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0 ">
+
+                  @auth
+                  <li class="nav-item">
+                    <a class="nav-link "href="#">{{auth()->user()->username}}</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('course') }}">New Course</a>
+                  </li>
+                  
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                  </li>
+                @else
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                  </li>
+                            
+                @endauth
+              
+            </ul>
+          </div>
+
+            
+            
+          </div>
+        </div>
+      </nav> --}}
+
+      <nav class=" navbar navbar-dark navbar-expand-lg bg-dark justify-content-center">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto">Simple</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+            <ul class="navbar-nav w-100 justify-content-center ">
+                <form class="mx-2 my-auto d-inline w-100" role="search" method="post" action={{"/search"}}>
+                    @csrf
+                <div class="input-group">
+
+                  <input class="form-control border border-right-0" name="search" id="search"   type="text" placeholder="Search" aria-label="Search">
+                  <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border border-left-0" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span> 
+                </div>               
+            </form>
+            </ul>
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                @auth
+                  <li class="nav-item">
+                    <a class="nav-link "href="#">{{auth()->user()->username}}</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('course') }}">New Course</a>
+                  </li>
+                  
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                  </li>
+                @else
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                  </li>
+                            
+                @endauth
+
+            </ul>
+        </div>
+    </nav>
     
 
-    {{-- @foreach ($courses as $item)
-        <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
-            <div class="div">{{$item->subject}}</div>
-            <div class="div">{{$item->description}}</div>
-
-            <img src="{{asset("images/" . $item->cover)}}" class="w-4 mb-8 shadow-xl" 
-            width="400"
-            alt="" >
-            
-
-        </div><br>
-    @endforeach --}}
-    {{-- <div id="loading" class="loader"></div> --}}
+    {{-- <div></div><br><br><br><br><br><br> --}}
+    
 
     @foreach ($courses as $item)
+       
+        <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
+
+        <div class="card mb-3 shadow-lg p-3 mb-5 bg-white rounded justify-content-center mx-auto" style="width: 50rem; ">
+            <img src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
+            width="400px"
+            alt="" >
+            <div class="card-body">
+              <h5 class="card-title">{{$item->subject}}</h5>
+              <p class="card-text">{{$item->description}}</p>
+              {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+            </div>
+          </div>
+        </div>
+    @endforeach
+    {{-- <div id="loading" class="loader"></div> --}}
+
+    {{-- @foreach ($courses as $item)
     <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
         <div class="container_n">
             <div class="card">
             <div class="card-header">
                 <div class="user">
-                    {{-- <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" /> --}}
                     <div class="user-info">
                     <h5>{{$item->user->username}}</h5>
                     <small>{{date('d-m-Y', strtotime($item->updated_at))}}</small>
@@ -111,7 +215,6 @@
                 <img src="{{asset("images/" . $item->cover)}}" alt="rover" >
             </div>
             <div class="card-body_n">
-                {{-- <span class="tag tag-teal">Technology</span> --}}
                 <div class="subject">
                 {{$item->subject}}
                 </div>
@@ -123,11 +226,10 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
     
-    <footer class="site-footer">
+    {{-- <footer class="site-footer">
         <div class="wrapper site-header__wrapper">
-            {{-- <a href="#" class="brand">Simple</a> --}}
             <nav class="nav">
                 <ul class="nav__wrapper">
                     
@@ -136,7 +238,7 @@
                 </ul>
             </nav>
           </div>
-    </footer>
+    </footer> --}}
 
 
 </body>
