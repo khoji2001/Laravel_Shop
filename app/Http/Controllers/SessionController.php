@@ -44,7 +44,7 @@ class SessionController extends Controller
     {
         // https://github.com/Owen-oj/laravel-getid3
         $request->validate([
-            'subject' => "required",
+            'subject' => "required|max:80",
             "image" => 'required_without_all:video,text|mimes:png,jpg,jpeg',
             "text" => 'required_without_all:video,image|max:350',
             'video' => [
