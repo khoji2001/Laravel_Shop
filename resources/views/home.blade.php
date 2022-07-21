@@ -189,8 +189,11 @@
         <div class="container">
             <div class="row">
                 <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
-                  <div class="card-header">{{$item->user->username}}</div>
-
+                  <div class="card-header">
+                    <h5 class="card-title">{{$item->user->username}}</h5>
+                    <p class="card-text">{{$item->description}}</p>
+                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                  </div>
                     <img 
                     src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
                     alt="" >
