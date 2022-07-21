@@ -16,7 +16,10 @@ class CourseController extends Controller
     public function show($id)
     {
         $sessions = Session::where('course_id',$id)->get();
-        $course = Course::where("id",$id)->first();
+        $course = Course::where("id",$id)->first(); #check find
+        $course->view += 1;
+        $course->save();
+
         $related = $course->related()->get();
         
         return view("course_show",compact('sessions','course',"related"));
@@ -51,7 +54,8 @@ class CourseController extends Controller
         $input = $request->all();
 
         $request->validate([
-            'subject' => "required",
+            'subject' => "required|max:80",
+            'desciption' =>"max:100",
             'imageUpload' => "required|mimes:jpg,png,jpeg",
         ]);
         // $cover = time() . "." . $request->image->extension();

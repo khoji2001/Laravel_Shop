@@ -130,7 +130,7 @@
         </div>
       </nav> --}}
 
-      <nav class=" navbar navbar-dark navbar-expand-lg bg-dark justify-content-center">
+      <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
         <a href="/" class="navbar-brand d-flex w-50 mr-auto">Simple</a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,21 +185,31 @@
 
     @foreach ($courses as $item)
        
-        <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
         <div class="container">
+          <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
+
             <div class="row">
                 <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
-                  <div class="card-header">
-                    <h5 class="card-title">{{$item->user->username}}</h5>
-                    <p class="card-text">{{$item->description}}</p>
+                  <div class="card-header bg-white d-flex justify-content-between">
+                    <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
+                    <p class="card-text p-2">starts</p>
+                    <p class="card-text p-2">{{$item->view}}</p>
+
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                   </div>
                     <img 
                     src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
                     alt="" >
                     <div class="card-body">
-                    <h5 class="card-title">{{$item->subject}}</h5>
-                    <p class="card-text">{{$item->description}}</p>
+                      <div class=" bg-white d-flex justify-content-between">
+                          <h5 class="card-title p-2">{{$item->subject}}</h5>
+                          <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
+                      </div>
+                      <div class=" bg-white d-flex justify-content-between">
+                        <p class="card-text p-2">{{$item->description}}</p>
+                        <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
+                    </div>
+
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                     </div>
                 </div>

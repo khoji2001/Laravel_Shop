@@ -23,5 +23,8 @@ class Course extends Model
     {
         return $this->belongsToMany(Course::class, 'related_course_pivot','post_id', 'related_id');
     }
+    public function session(){
+        return $this->hasMany(Session::class,"course_id","id"); 
+    }
 
 }

@@ -48,9 +48,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
+    {{-- <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" > --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     {{-- <style>
   body{
     background-color: #dfdfdf;
@@ -158,9 +160,9 @@
 </head>
 
 <body>
-    window.onbeforeunload = function() { return "Your work will be lost."; };
+    {{-- window.onbeforeunload = function() { return "Your work will be lost."; }; --}}
 
-    <header class="site-header">
+    {{-- <header class="site-header">
         <div class="wrapper site-header__wrapper">
           <a href="/" class="brand">Simple</a>
           <nav class="nav">
@@ -174,7 +176,42 @@
             </ul>
           </nav>
         </div>
-    </header>
+    </header> --}}
+    <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
+      <a href="/" class="navbar-brand d-flex w-50 mr-auto">Simple</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+          
+          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+              @auth
+                <li class="nav-item">
+                  <a class="nav-link "href="#">{{auth()->user()->username}}</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ route('course') }}">New Course</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">Register</a>
+                </li>
+                          
+              @endauth
+
+          </ul>
+      </div>
+  </nav>
     <div><br><br><br>
     {{-- @if(Session::get('message'))
       <div class="alert alert-primary" role="alert">
@@ -223,6 +260,47 @@
             <input type="submit" value="Submit" id="form_sub">
         </form>
     </div><br><br>
+    <div class="container">
+    <form id="myform" name="myform" method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
+      @csrf
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters" class="form-control ">
+        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" maxlength="100" placeholder="100 characters" class="form-control">
+        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <div class="form-group">
+        <label for="imageUpload">Cover</label>
+        <input type='file' class="form-control-file" id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br>
+      
+      <input type="hidden" name="base64image" name="base64image" id="base64image">
+            {{-- <img id="blah" src="#" alt="your image" /> --}}
+
+            {{-- <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br> --}}
+            {{-- onclick="myFunction()" --}}
+            <div class="avatar-preview container2">
+                @php
+                    if(!empty($image->image) && $image->image!='' && file_exists(public_path('images/'.$image->image))){
+                      $image =$image->image;
+                    }else{
+                      $image = 'default.png';
+                    }
+                    $url = url('public/images/'.$image);
+                    $imgs =  "background-image:url($url)";
+                      
+                @endphp
+                <div id="imagePreview" style="{{$imgs}};">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                </div>
+            </div>
+          </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
 
     <ul>
         @foreach ($errors->all() as $error)
