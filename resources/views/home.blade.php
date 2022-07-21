@@ -180,23 +180,27 @@
     </nav>
     
 
-    {{-- <div></div><br><br><br><br><br><br> --}}
+    <div></div><br>
     
 
     @foreach ($courses as $item)
        
         <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
+        <div class="container">
+            <div class="row">
+                <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
+                  <div class="card-header">{{$item->user->username}}</div>
 
-        <div class="card mb-3 shadow-lg p-3 mb-5 bg-white rounded justify-content-center mx-auto" style="width: 50rem; ">
-            <img src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
-            width="400px"
-            alt="" >
-            <div class="card-body">
-              <h5 class="card-title">{{$item->subject}}</h5>
-              <p class="card-text">{{$item->description}}</p>
-              {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                    <img 
+                    src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
+                    alt="" >
+                    <div class="card-body">
+                    <h5 class="card-title">{{$item->subject}}</h5>
+                    <p class="card-text">{{$item->description}}</p>
+                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
     @endforeach
     {{-- <div id="loading" class="loader"></div> --}}
