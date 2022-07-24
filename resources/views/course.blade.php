@@ -295,6 +295,16 @@
           cropper = new Cropper(image, {
               aspectRatio: 1.333,
               viewMode: 1,
+              // autoCropArea: 0.7,
+       
+              // center: true,
+              // dragMode: 'move',
+              // movable: true,
+              // scalable: true,
+              // guides: true,
+              // zoomOnWheel: true,
+              // cropBoxMovable: true,
+              // wheelZoomRatio: 0.1,
           });
       }).on('hidden.bs.modal', function() {
           cropper.destroy();
@@ -304,6 +314,7 @@
           canvas = cropper.getCroppedCanvas({
               width: 800,
               height: 600,
+              
           });
           canvas.toBlob(function(blob) {
               url = URL.createObjectURL(blob);

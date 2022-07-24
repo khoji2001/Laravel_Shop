@@ -66,9 +66,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" > --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         function myFunction() {
@@ -112,28 +114,34 @@
     }
 
     </script>
+    <style>
+        .container_l {
+        border-radius: 5px;
+        background-color: #f0f5fb;/*f0f5fb*/
+        padding: 10px;
+        }
+        input[type=text], select, textarea {
+            width: 90%; /* Full width */
+            padding: 12px; /* Some padding */ 
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box; /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+            }
+    </style>
 </head>
 
 <body>
    
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="/" class="brand">Simple</a>
-          <nav class="nav">
-            
-            <ul class="nav__wrapper">
-            
-                <li class="nav__item">  
-                    <a href="#">welcome</a>
-                </li>
-                       
-            </ul>
-          </nav>
-        </div>
-    </header>
-    <div><br><br><br><br>
+    <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
+        
+    </nav>
+
     
-    <div class="container">
+    <div class="container_l">
         <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
             @csrf
             <label for="subject">Subject:</label><br>
@@ -158,7 +166,7 @@
     
     
     
-            <input type="submit" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Submit">
         </form><br><br>
         <div style="color: #ff0000;" >
         <ul>
@@ -169,22 +177,28 @@
         </div>
         
     
-    </div>
+    </div><br>
     
     
-    <div class="countt">
-        <form action="/api/finish" method="post">
-            <div class="containerbut">
-                <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-                <input type="submit" style="background-color: rgb(4, 123, 4)" value="Publish" />
+    
+    <div class="container" style="background: #ffff">
+        <div class="row">
+            <div class=" bg-white d-flex justify-content-center">
+        
+                <form action="/api/finish" method="post">
+                    <div class="containerbut">
+                        <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+                        <input type="submit" class="btn btn-success btn-lg"  value="Publish" />
+                    </div>
+                </form>
+                <form action="/api/leave" method="post">
+                    <div class="containerbut">
+                        <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+                        <input type="submit" class="btn btn-danger btn-lg" value="Leave" />
+                    </div>
+                </form>
             </div>
-        </form>
-        <form action="/api/leave" method="post">
-            <div class="containerbut">
-                <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-                <input type="submit" style="background-color: rgb(199, 23, 23)" value="Leave" />
-            </div>
-        </form>
+        </div>
     </div>
     {{-- <div style="" class="countt">
         
@@ -196,28 +210,72 @@
     </div>
     @endif --}}
 
-    @foreach ($sessions as $item)
-    <div class="count">{{ $loop->iteration }}</div>
+    {{-- @foreach ($sessions as $item)
 
-    <div class="container_s">
-        <div class="subject" >{{$item->subject}}</div><br>
-        <div >{{$item->text}}</div><br>
-        <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
-            width="250"
-            alt=""><br>
-        @if(isset($item->video))
-        <video width="300" controlsList="nodownload" controls>
-            <source src='{{asset("viidd/$item->video")}}'
-                    type="video/mp4">
-        
-            Sorry, your browser doesn't support embedded videos.
-        </video><br>
-        @endif
-        
-        
+    <div class="container" style="background: #ffff">
+        <div class="row">
+            <div class="count">{{ $loop->iteration }}</div>
 
-    </div><br>
-    @endforeach
+                <div class="container_s">
+                    <div class="subject" >{{$item->subject}}</div><br>
+                    <div >{{$item->text}}</div><br>
+                    <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
+                        width="250"
+                        alt=""><br>
+                    @if(isset($item->video))
+                    <video width="300" controlsList="nodownload" controls>
+                        <source src='{{asset("viidd/$item->video")}}'
+                                type="video/mp4">
+                    
+                        Sorry, your browser doesn't support embedded videos.
+                    </video><br>
+                    @endif
+                    
+                    
+
+                </div><br>
+        </div>
+    </div>
+    @endforeach --}}
+
+
+@foreach ($sessions as $item)
+       
+<div class="container">
+
+    <div class="row">
+        <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
+          <div class="card-header bg-white d-flex justify-content-center">
+            <h4 class="card-title  p-2 " >{{$item->subject}}</h4>
+            {{-- <p class="card-text p-2">starts</p> --}}
+            {{-- <p class="card-text p-2">{{$item->view}}</p> --}}
+
+            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+          </div>
+            <img 
+            src="{{asset("images/" . $item->image)}}" class="card-img-top" 
+            alt="" >
+            @if(isset($item->video))
+                    <video class="card-img-top"  width="800" controlsList="nodownload" controls>
+                        <source src='{{asset("viidd/$item->video")}}'
+                                type="video/mp4">
+                    
+                        Sorry, your browser doesn't support embedded videos.
+                    </video><br>
+                    @endif
+
+            <div class="card-body">
+              <div class=" bg-white d-flex justify-content-center">
+                  {{-- <h5 class="card-title p-2">{{$item->subject}}</h5> --}}
+                  <p class="card-text">{{$item->text}}</p>
+              </div>
+
+            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
     {{-- <div class="count">
     <form action="/api/finish" method="post">

@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta http-equiv="refresh" content="5" > --}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     {{-- <link rel="stylesheet" href="styles/reset.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
@@ -16,6 +15,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+{{-- <style>
+  .card-img-top {
+    width: 100%;
+    /* height: 150px; */
+    object-fit: cover;
+}
+</style> --}}
 {{-- <style>
     .loader {
       border: 16px solid #f3f3f3;
@@ -186,10 +192,10 @@
     @foreach ($courses as $item)
        
         <div class="container">
-          <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
+          <div onclick="window.open('course/{{$item->id}}','_self');" style="cursor: pointer;">
 
             <div class="row">
-                <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
+                <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 50rem !important;padding: 0 !important; ">
                   <div class="card-header bg-white d-flex justify-content-between">
                     <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
                     <p class="card-text p-2">starts</p>
@@ -199,14 +205,14 @@
                   </div>
                     <img 
                     src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
-                    alt="" >
+                    alt="Card image cap" >
                     <div class="card-body">
                       <div class=" bg-white d-flex justify-content-between">
                           <h5 class="card-title p-2">{{$item->subject}}</h5>
                           <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
                       </div>
                       <div class=" bg-white d-flex justify-content-between">
-                        <p class="card-text p-2">{{$item->description}}</p>
+                        <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
                         <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
                     </div>
 
@@ -215,7 +221,10 @@
                 </div>
             </div>
         </div>
+      </div>
     @endforeach
+
+
     {{-- <div id="loading" class="loader"></div> --}}
 
     {{-- @foreach ($courses as $item)
