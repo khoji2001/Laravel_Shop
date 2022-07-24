@@ -46,7 +46,7 @@ class SessionController extends Controller
         $request->validate([
             'subject' => "required|max:80",
             "image" => 'required_without_all:video,text|mimes:png,jpg,jpeg',
-            "text" => 'required_without_all:video,image|max:350',
+            "text" => 'required_without_all:video,image|max:351',
             'video' => [
                 'required_without_all:text,image',
                 'mimetypes:video/mp4',
