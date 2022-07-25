@@ -140,6 +140,7 @@
         
     </nav>
 
+    @if($sessions->count() < 10)
     
     <div class="container_l">
         <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
@@ -178,6 +179,10 @@
         
     
     </div><br>
+    @else
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        Max number of sessions is 60 session</div>
+    @endif
     
     
     
@@ -188,7 +193,7 @@
                 <form action="/api/finish" method="post">
                     <div class="containerbut">
                         <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-                        <input type="submit" class="btn btn-success btn-lg"  value="Publish" />
+                        <input type="submit" class="btn btn-success btn-lg"  value="Complete" />
                     </div>
                 </form>
                 <form action="/api/leave" method="post">
@@ -238,8 +243,10 @@
     </div>
     @endforeach --}}
 
-
 @foreach ($sessions as $item)
+<div class="d-flex justify-content-center" style="font-weight: bold;
+font-family:Times New Roman;
+font-size: 40px; ">{{ $loop->iteration }}</div>
        
 <div class="container">
 
