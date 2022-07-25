@@ -31,7 +31,7 @@ class FrontEndController extends Controller
 
         // $courses = Course::where("first_session",1)->delete();
         
-        $courses = Course::where("first_session",1)->get();
+        $courses = Course::where("first_session",1)->orderBy("view", 'DESC')->get();
         // dd(auth()->user());
         return view('home',compact("courses"));
     }
