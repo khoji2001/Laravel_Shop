@@ -238,5 +238,6 @@ class CourseController extends Controller
         // dd($manage[1]);
 
         return back()->with('data', $data); 
+        
     }
 }
