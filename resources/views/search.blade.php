@@ -89,17 +89,17 @@
                 src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
                 alt="" >
                 <div class="card-body">
-                <div class=" bg-white d-flex justify-content-between">
-                    <h5 class="card-title p-2">{{$item->subject}}</h5>
-                    <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
-                </div>
-                <div class=" bg-white d-flex justify-content-between">
-                    <p class="card-title p-2">{{$item->description}}</p>
-                    <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
-                </div>
+                    <div class=" bg-white d-flex justify-content-between">
+                        <h5 class="card-title p-2">{{$item->subject}}</h5>
+                        <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
+                    </div>
+                    <div class=" bg-white d-flex justify-content-between">
+                      <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
+                      <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
+                  </div>
 
-                {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
-                </div>
+                  {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                  </div>
             </div>
         </div>
     </div>
