@@ -83,24 +83,28 @@
     <div class="d-flex justify-content-center" style="font-weight: bold;
     font-family:Times New Roman;
     font-size: 40px; ">{{ $loop->iteration }}</div>
-    <div class="container-fluid mb-5 shadow-lg d-flex align-items-center justify-content-center">
+    <div class="container-fluid ">
       <div class="row">
-        <div class="subject" style="font-weight: bold;
+        <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto">
+          <div class="card-body bg-white d-flex justify-content-center">
+            <div class=" bg-white mx-auto justify-content-center">
+                <h5 class="card-title p-2">{{$item->subject}}</h5>
+                <h6 class="card-text p-2">{{$item->text}}</h6>
+            </div>
+          </div>
+        {{-- <div class="subject" style="font-weight: bold;
         font-family:Times New Roman;
-        font-size: 30px;" >{{$item->subject}}</div><br>
+        font-size: 30px;" >{{$item->subject}}</div><br> --}}
         {{-- <div >{{asset("videos/" . $item->video)}}{{URL::asset("/videos/$item->video")}} </div><br> --}}
         {{-- course{{$course}}0000000000{{$related}} --}}
-        <p >{{$item->text}}</p><br><br>
-        <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl display: block;
-        margin-left: auto;
-        margin-right: auto;" 
-            width="800"
-            height= "auto"
-            alt=""><br><br>
+        {{-- <p >{{$item->text}}</p><br><br> --}}
+        @if(isset($item->image))
+        <img src="{{asset("images/" . $item->image)}}" class="card-img-top justify-content-center mx-auto" style="max-width:800px;" alt="Responsive image"><br>
+        @endif
         @if(isset($item->video))
         {{-- https://videojs.com/getting-started/ --}}
         {{-- https://github.com/imanghafoori1/laravel-video --}}
-        <video width="800" controlsList="nodownload" controls>
+        <video  class="card-img-top justify-content-center mx-auto" style="max-width:800px;" controlsList="nodownload" controls>
             <source src='{{asset("viidd/$item->video")}}'
                     type="video/mp4">
         
@@ -109,8 +113,9 @@
           
 
         @endif
-   
         
+   
+        </div>
         
       </div> 
     </div><br>
