@@ -293,18 +293,28 @@
       });
       $modal.on('shown.bs.modal', function() {
           cropper = new Cropper(image, {
-              aspectRatio: 1.333,
+              autoCrop: true,
+              autoCropArea: 1,
+              aspectRatio: 800 / 600,
+              minCropBoxWidth: 800,
+              minCropBoxHeight: 600,
               viewMode: 1,
-              // autoCropArea: 0.7,
-       
-              // center: true,
+              // aspectRatio: 1.333,
+              // viewMode: 1,
               // dragMode: 'move',
-              // movable: true,
-              // scalable: true,
-              // guides: true,
-              // zoomOnWheel: true,
-              // cropBoxMovable: true,
-              // wheelZoomRatio: 0.1,
+              // autoCropArea: 1,
+            // autoCropArea: 0.65,
+            // restore: false,
+            // guides: false,
+            // center: false,
+            // highlight: false,
+            // cropBoxMovable: false,
+            // cropBoxResizable: false,
+            // toggleDragModeOnDblclick: true,
+            // data:{ //define cropbox size
+            //   width: 240,
+            //   height:  90,
+            // },
           });
       }).on('hidden.bs.modal', function() {
           cropper.destroy();

@@ -55,7 +55,7 @@ class CourseController extends Controller
 
         $request->validate([
             'subject' => "required|max:80",
-            'desciption' =>"max:100|string",
+            'description' =>"max:100",
             'imageUpload' => "required|mimes:jpg,png,jpeg",
         ]);
         // $cover = time() . "." . $request->image->extension();
