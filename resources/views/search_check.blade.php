@@ -75,7 +75,7 @@
             
                 <form action="{{ asset('/') }}" method="get">
                     <input type = "hidden" id="id" name = "id" value = {{(int)$id}}/>
-                    <input type="submit" class=" btn btn-success btn-lg" style="  background-color: rgb(19, 16, 245); color: #fff;" value="Complete & Publish">
+                    <input type="submit" class=" btn btn-success btn-lg" style="  background-color: rgb(19, 16, 245); color: #fff;" value="Publish">
                 </form>
             </div>
         </div>
@@ -195,3 +195,4 @@
     </footer> --}}
 </body>
 </html>
+
