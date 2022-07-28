@@ -94,7 +94,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('logout', [FrontEndController::class,"logout"])->name("logout");
     Route::get('/',[FrontEndController::class,"index"])->name("home");
     
-    
-
 });
+
 
