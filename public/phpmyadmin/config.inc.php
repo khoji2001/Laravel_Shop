@@ -15,8 +15,9 @@ $cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['port'] = '8000';
 $cfg['Servers'][$i]['socket'] = '';
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
-$cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+// $cfg['Servers'][$i]['user'] = 'r';
+// $cfg['Servers'][$i]['AllowPassword'] = TRUE;
+// $cfg['Servers'][$i]['Password'] = "1234";
 
 /* End of servers configuration */
 
@@ -26,3 +27,8 @@ $cfg['ServerDefault'] = 1;
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 
+/* User for advanced features */
+$cfg['Servers'][$i]['controluser'] = 'khoji'; 
+$cfg['Servers'][$i]['controlpass'] = '1234';
+
+// https://stackoverflow.com/questions/46736319/phpmyadmin-error-mysqli-real-connect-hy000-1045-access-denied-for-user-p

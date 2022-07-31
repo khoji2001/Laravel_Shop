@@ -187,6 +187,22 @@
     
 
     <div></div><br>
+    @if(isset($first_video))
+    {{-- https://videojs.com/getting-started/ --}}
+    {{-- https://github.com/imanghafoori1/laravel-video --}}
+    <div class="container">
+      <div class="row">
+
+        <video  class=" justify-content-center mx-auto"  controlsList="nodownload" controls>
+            <source src='{{asset("viidd_f/$first_video")}}'
+                    type="video/mp4">
+        
+            Sorry, your browser doesn't support embedded videos.
+        </video><br>
+      </div>
+    </div><br>
+
+    @endif
     
 
     @foreach ($courses as $item)
@@ -198,7 +214,8 @@
                 <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 50rem !important;padding: 0 !important; ">
                   <div class="card-header bg-white d-flex justify-content-between">
                     <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
-                    <p class="card-text p-2">starts</p>
+                    <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
+
                     <p class="card-text p-2">{{$item->view}}</p>
 
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
@@ -209,11 +226,11 @@
                     <div class="card-body">
                       <div class=" bg-white d-flex justify-content-between">
                           <h5 class="card-title p-2">{{$item->subject}}</h5>
-                          <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
-                      </div>
+                          <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
+
+                        </div>
                       <div class=" bg-white d-flex justify-content-between">
                         <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
-                        <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
                     </div>
 
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}

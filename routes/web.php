@@ -49,6 +49,10 @@ Route::get('/viidd/{video}', function ($video) {
     $path = public_path('videos/'.$video);
     VideoStreamer::streamFile($path);
 });
+Route::get('/viidd_f/{video}', function ($video) {
+    $path = public_path('videos/first/'.$video);
+    VideoStreamer::streamFile($path);
+});
 
 
 
@@ -70,6 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("/search/check",[FrontEndController::class,"search_check_get"]);
 
     Route::post("/search/check",[FrontEndController::class,"search_check"]);
+    Route::get("firstvid",[FrontEndController::class,"firstvid"]);
+    Route::post("firstvid",[FrontEndController::class,"firstvid_post"]);
     
 });
 Route::get("/course/{id}",[CourseController::class,"show"]);
@@ -97,3 +103,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 });
 
 
+
+
+// https://stackoverflow.com/questions/46736319/phpmyadmin-error-mysqli-real-connect-hy000-1045-access-denied-for-user-p

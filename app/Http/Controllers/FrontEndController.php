@@ -2,38 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Filesystem\Filesystem;
 
-use DB;
+
+use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\Storage;
 
 class FrontEndController extends Controller
 {
     public function index()
     {
-        // if(Auth::check())
-        // {
-        //     return view('home');
-        // }
-        // else
-        // {
-        //     return "home";
-        // }
-        
-        
-        // $data =  DB::select('select cover from courses');
-        // // dd($data);
-        // File::delete($data.first);
-
-        // $courses = Course::where("first_session",1)->delete();
-        
+               
         $courses = Course::where("first_session",1)->orderBy("view", 'DESC')->get();
-        // dd(auth()->user());
-        return view('home',compact("courses"));
+
+        
+        if(isset(scandir(public_path("videos/first"))[2])){
+
+            $first_video = scandir(public_path("videos/first"))[2];
+            return view('home',compact("courses","first_video"));
+        }else{
+            return view('home',compact("courses"));
+        }
+        // dd($firstFile);
     }
     public function dashboard()
     {
@@ -165,5 +161,24 @@ class FrontEndController extends Controller
         file_put_contents($file, $image_base64);
         dd($file);
         return $cover;
+    }
+    public function firstvid(){
+        if(auth()->user()->admin==1){
+            return view("video");
+        }
+        else{
+            return redirect("/");
+        }
+        
+    }
+    public function firstvid_post(Request $request){
+        // dd($request);
+        $file = new Filesystem;
+        $file->cleanDirectory(public_path('videos/first'));
+
+
+        $video = "firstvideo". "." . $request->video->extension();
+        $request->video->move(public_path("videos/first"),$video);
+        return redirect("/");
     }
 }
