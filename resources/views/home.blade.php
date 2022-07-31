@@ -226,11 +226,13 @@
                     <div class="card-body">
                       <div class=" bg-white d-flex justify-content-between">
                           <h5 class="card-title p-2">{{$item->subject}}</h5>
-                          <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
+                          <h6 class="card-text p-2">fsdfs</h6>
 
                         </div>
                       <div class=" bg-white d-flex justify-content-between">
-                        <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
+                        <h5  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h5>
+                        <h6 class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</h6>
+                      </div>
                     </div>
 
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}

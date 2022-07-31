@@ -49,7 +49,7 @@ class SessionController extends Controller
             "text" => 'required_without_all:video,image|max:351',
             'video' => [
                 'required_without_all:text,image',
-                'mimetypes:video/mp4',
+                'mimes:mp4,mov',
                 function ($attribute, $value, $fail) {
                     $video = new GetId3($value);
         
@@ -58,6 +58,11 @@ class SessionController extends Controller
                     }
                 }
             ]
+        ],[
+            "image.required_without_all" => "There is no content",
+            "video.required_without_all" => "There is no content",
+            "text.required_without_all" => "There is no content"
+
         ]);
 
         $data = $request->all();

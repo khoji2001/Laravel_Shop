@@ -104,7 +104,7 @@
         @if(isset($item->video))
         {{-- https://videojs.com/getting-started/ --}}
         {{-- https://github.com/imanghafoori1/laravel-video --}}
-        <video  class="card-img-top justify-content-center mx-auto" style="max-width:800px;" controlsList="nodownload" controls>
+        <video  class="card-img-top justify-content-center mx-auto" style="max-width:800px; max-height:800px; " controlsList="nodownload" controls>
             <source src='{{asset("viidd/$item->video")}}'
                     type="video/mp4">
         

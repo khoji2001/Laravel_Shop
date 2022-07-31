@@ -57,6 +57,8 @@ class CourseController extends Controller
             'subject' => "required|max:80",
             'description' =>"max:100",
             'imageUpload' => "required|mimes:jpg,png,jpeg",
+        ],[
+            "imageUpload.required" => "The cover field is required"
         ]);
         // $cover = time() . "." . $request->image->extension();
         // $request->validate([
