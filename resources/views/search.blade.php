@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Simple</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -49,7 +49,7 @@
 
                 <input class="form-control border border-right-0" name="search" id="search" type="text" placeholder="Search" aria-label="Search">
                 <span class="input-group-append">
-                  <button class="btn btn-outline-secondary border border-left-0" type="button">
+                  <button class="btn btn-outline-secondary border border-left-0" type="submit">
                       <i class="fa fa-search"></i>
                   </button>
               </span> 
@@ -72,38 +72,40 @@
 
 
     @foreach ($courses as $item)
-       
-    <div class="container">
+    <div onclick="window.open('course/{{$item->id}}','_self');" style="cursor: pointer;">
+  
+        <div class="container">
 
-        <div class="row">
-            <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
-            <div class="card-header bg-white d-flex justify-content-between">
-        
-                <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
-                <p class="card-text p-2">starts</p>
-                <p class="card-text p-2">{{$item->view}}</p>
+            <div class="row">
+                <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
+                <div class="card-header bg-white d-flex justify-content-between">
+            
+                    <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
+                    <p class="card-text p-2">starts</p>
+                    <p class="card-text p-2">{{$item->view}}</p>
 
-                {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
-            </div>
-                <img 
-                src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
-                alt="" >
-                <div class="card-body">
-                    <div class=" bg-white d-flex justify-content-between">
-                        <h5 class="card-title p-2">{{$item->subject}}</h5>
-                        <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
+                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                </div>
+                    <img 
+                    src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
+                    alt="" >
+                    <div class="card-body">
+                        <div class=" bg-white d-flex justify-content-between">
+                            <h5  style="overflow-y: auto;" class="card-title p-2">{{$item->subject}}</h5>
+                            <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
+                        </div>
+                        <div class=" bg-white d-flex justify-content-between">
+                        <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
+                        <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
                     </div>
-                    <div class=" bg-white d-flex justify-content-between">
-                      <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>
-                      <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
-                  </div>
 
-                  {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
-                  </div>
+                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-@endforeach
+    @endforeach
 
     @if($courses->isEmpty())
         <div>Not found</div>

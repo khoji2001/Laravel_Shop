@@ -91,7 +91,7 @@ function myFunctionimage() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>login</title>
+    <title>Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
@@ -151,14 +151,14 @@ function myFunctionimage() {
             <ul class="nav__wrapper">
             
                 <li class="nav__item">  
-                    <a href="#">welcome</a>
+                    <a href="#"> </a>
                 </li>
                        
             </ul>
           </nav>
         </div>
     </header>
-    <div><br><br><br><br>
+    <div><br><br><br>
     
     <div class="container">
         <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >

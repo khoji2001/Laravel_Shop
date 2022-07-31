@@ -59,9 +59,9 @@ class SessionController extends Controller
                 }
             ]
         ],[
-            "image.required_without_all" => "There is no content",
-            "video.required_without_all" => "There is no content",
-            "text.required_without_all" => "There is no content"
+            "image.required_without_all" => "There is no content choose Text,image,video",
+            "video.required_without_all" => "There is no content choose Text,image,video",
+            "text.required_without_all" => "There is no content choose Text,image,video"
 
         ]);
 

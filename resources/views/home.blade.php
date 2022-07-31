@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta http-equiv="refresh" content="5" > --}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Simple</title>
     
     {{-- <link rel="stylesheet" href="styles/reset.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
@@ -150,7 +150,7 @@
 
                   <input class="form-control border border-right-0" name="search" id="search"   type="text" placeholder="Search" aria-label="Search">
                   <span class="input-group-append">
-                    <button class="btn btn-outline-secondary border border-left-0" type="button">
+                    <button class="btn btn-outline-secondary border border-left-0" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </span> 
@@ -225,8 +225,7 @@
                     alt="Card image cap" >
                     <div class="card-body">
                       <div class=" bg-white d-flex justify-content-between">
-                          <h5 class="card-title p-2">{{$item->subject}}</h5>
-                          <h6 class="card-text p-2">fsdfs</h6>
+                          <h5  style="overflow-y: auto;" class="card-title p-2">{{$item->subject}}</h5>
 
                         </div>
                       <div class=" bg-white d-flex justify-content-between">

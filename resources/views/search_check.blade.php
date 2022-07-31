@@ -35,7 +35,7 @@
         </div>
     </header> --}}
     <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
-        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
+        <a href="" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
 
                   <input class="form-control border border-right-0" name="search" id="search" type="text" placeholder="Search" aria-label="Search">
                   <span class="input-group-append">
-                    <button class="btn btn-outline-secondary border border-left-0" type="button">
+                    <button class="btn btn-outline-secondary border border-left-0" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </span> 
@@ -74,7 +74,7 @@
 
             
                 <form action="{{ asset('/') }}" method="get">
-                    <input type = "hidden" id="id" name = "id" value = {{(int)$id}}/>
+                    {{-- <input type = "hidden" id="id" name = "id" value = {{(int)$id}}/> --}}
                     <input type="submit" class=" btn btn-success btn-lg" style="  background-color: rgb(19, 16, 245); color: #fff;" value="Publish">
                 </form>
             </div>
@@ -163,7 +163,7 @@
                         alt="" >
                         <div class="card-body">
                         <div class=" bg-white d-flex justify-content-between">
-                            <h5 class="card-title p-2">{{$item->subject}}</h5>
+                            <h5  style="overflow-y: auto;" class="card-title p-2">{{$item->subject}}</h5>
                             <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
                         </div>
                         <div class=" bg-white d-flex justify-content-between">
