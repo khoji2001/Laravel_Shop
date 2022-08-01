@@ -6,6 +6,8 @@
     {{-- <meta http-equiv="refresh" content="5" > --}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple</title>
+    <link rel="icon" type="image/x-icon" href="/images/1657803046.png">
+
     
     {{-- <link rel="stylesheet" href="styles/reset.min.css" />
     <link rel="stylesheet" href="styles/style.css" />

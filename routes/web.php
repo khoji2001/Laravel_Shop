@@ -19,7 +19,7 @@ use App\Http\Controllers\FrontEndController;
 */
 //AUTH
 Route::get('/',[FrontEndController::class,"index"])->name("home");
-Route::get('/dashboard',[FrontEndController::class,"dashboard"])->name("dashboard");
+// Route::get('/dashboard',[FrontEndController::class,"dashboard"])->name("dashboard");
 Route::get("/api/login",[FrontEndController::class,"login"])->name("login");
 Route::post("/api/login",[FrontEndController::class,"login_submit"]);
 Route::get("/api/register",[FrontEndController::class,"register"])->name('register');
@@ -28,14 +28,14 @@ Route::post("/api/register",[FrontEndController::class,"register_submit"]);
 
 
 //session
-Route::get("/api/session/",[SessionController::class,"index"]);
-Route::post("/api/session",[SessionController::class,"store"]);
-Route::get("/api/session/add/{id}",[SessionController::class,"show"]);
+// Route::get("/api/session/",[SessionController::class,"index"]);
+// Route::post("/api/session",[SessionController::class,"store"]);
+// Route::get("/api/session/add/{id}",[SessionController::class,"show"]);
 
 
 //course
-Route::get("/api/course",[CourseController::class,"index"])->name('course');
-Route::post("/api/course",[CourseController::class,"store"]);
+// Route::get("/api/course",[CourseController::class,"index"])->name('course');
+// Route::post("/api/course",[CourseController::class,"store"]);
 
 Route::get("/course/{id}",[CourseController::class,"show"]);
 
@@ -56,9 +56,8 @@ Route::get('/viidd_f/{video}', function ($video) {
 
 
 
-Route::post("/add/related",[CourseController::class,"add_related"])->name("add_related");
 
-Route::post("/too",[FrontEndController::class,"too"]);
+// Route::post("/too",[FrontEndController::class,"too"]);
 
 
 Route::group(['middleware' => ['auth']], function () { 
@@ -76,6 +75,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post("/search/check",[FrontEndController::class,"search_check"]);
     Route::get("firstvid",[FrontEndController::class,"firstvid"]);
     Route::post("firstvid",[FrontEndController::class,"firstvid_post"]);
+    Route::post("/api/finish",[SessionController::class,"finish"]);
+    Route::post("/api/leave",[SessionController::class,"leave"]);
+    Route::post("/add/related",[CourseController::class,"add_related"])->name("add_related");
+
     
 });
 Route::get("/course/{id}",[CourseController::class,"show"]);
@@ -92,8 +95,7 @@ Route::get("boot",[FrontEndController::class,"boot"]);
 // Route::get("api/test/sessions",[FrontEndController::class,"test"]);
 
 
-Route::post("/api/finish",[SessionController::class,"finish"]);
-Route::post("/api/leave",[SessionController::class,"leave"]);
+
 
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
