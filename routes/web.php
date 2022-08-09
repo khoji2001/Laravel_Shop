@@ -56,7 +56,6 @@ Route::get('/viidd_f/{video}', function ($video) {
 
 
 
-
 // Route::post("/too",[FrontEndController::class,"too"]);
 
 
