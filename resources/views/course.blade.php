@@ -233,32 +233,32 @@
         {{ session()->get('message') }}
     </div>
     @endif
-
-    <div class="modal fade bd-example-modal-lg imagecrop " data-keyboard="false" data-backdrop="static" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cover:</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div class="img-container">
-                  <div class="row">
-                      <div class="col-md-11">
-                          <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
-                      </div>
-                  </div>
+    
+      <div class="modal fade bd-example-modal-lg imagecrop " data-keyboard="false" data-backdrop="static" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg" style=" height: 100vh;">
+          <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cover:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" >
+                    <div class="row">
+                        <div class="col-md-11">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                        </div>
+                    </div>
+                </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary crop" id="crop">Crop</button>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary crop" id="crop">Crop</button>
+              </div>
+          </div>
         </div>
       </div>
-    </div>
   
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -298,7 +298,23 @@
               aspectRatio: 800 / 600,
               minCropBoxWidth: 800,
               minCropBoxHeight: 600,
-              viewMode: 1,
+              viewMode: 3,
+
+              // cropBoxResizable: false,
+
+
+              // aspectRatio: 16 / 9,
+              // dragMode: 'move',
+              // viewMode: 3,
+              // aspectRatio: 1
+
+              // autoCrop : true,
+              // strict: false,
+              // background: false,
+              // autoCropArea: 1,
+              // aspectRatio: 800 / 600,
+
+
               // aspectRatio: 1.333,
               // viewMode: 1,
               // dragMode: 'move',
