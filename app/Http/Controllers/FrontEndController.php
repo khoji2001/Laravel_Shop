@@ -97,8 +97,15 @@ class FrontEndController extends Controller
     public function search(Request $request) {
     // dd($request->search);
     $search = $request->search;
-    $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
-    
+    // dd($search);
+
+    $courses = Course::where('first_session',1)->where(function($query) use ($search) {
+        $query->where('subject', 'LIKE', "%" . $search . "%")
+                    ->orWhere('description', 'LIKE', "%" . $search . "%");
+        })->orderBy("view", 'DESC')->get();
+
+    // $courses = Course::where("first_session",1)->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
+    // $courses = Course::where([["first_session",1],['subject', 'LIKE', '%'.$search.'%'],['description', 'LIKE', '%'.$search.'%']])->orderBy("view", 'DESC')->get();
     return view('search',compact('courses','search'));
     }
 
@@ -106,8 +113,13 @@ class FrontEndController extends Controller
         // dd($request->search);
         $id = $request->query('id');
         $search = $request->search;
-        $courses = Course::where('id',"!=", (int)$id)->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
 
+        $courses = Course::where('first_session',1)->where('id', '!=' , $id)->where(function($query) use ($search) {
+            $query->where('subject', 'LIKE', "%" . $search . "%")
+                        ->orWhere('description', 'LIKE', "%" . $search . "%");
+            })->orderBy("view", 'DESC')->get();
+
+        // $courses = Course::where("first_session",1)->where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
         // $courses = Course::where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->where('id', '!=' , $id)->get();
         $leadIds = DB::table('related_course_pivot')->select('post_id',"related_id")->distinct()->get();
 
@@ -117,10 +129,17 @@ class FrontEndController extends Controller
         // dd($request->search);
         $id = $request->query('id');
         // dd((int)$id);
-        $search = $request->search;
+      
         
         // $courses = Course::where('id',"!=", 13)->orWhere('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
-        $courses = Course::where('id',"!=", (int)$id)->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
+        // $courses = Course::where('id',"!=", (int)$id)->where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
+        // $courses =Course::where("first_session",1)->where([['id',"!=", (int)$id],['subject', 'LIKE', '%'.$search.'%'],['description', 'LIKE', '%'.$search.'%']])->orderBy("view", 'DESC')->get();
+        
+        $courses = Course::where("first_session",1)->where('id',"!=", (int)$id)->orderBy("view", 'DESC')->get();
+        $search ="";
+        
+        // $courses = Course::where("first_session",1)->where('subject', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->orderBy("view", 'DESC')->get();
+
         // dd($courses);
 
         // $courses->permissions()->where('subject', 'LIKE', '%'.$search.'%')->where('description', 'LIKE', '%'.$search.'%')->get();
