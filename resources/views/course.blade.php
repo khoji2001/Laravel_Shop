@@ -235,7 +235,7 @@
     @endif
     
       <div class="modal fade bd-example-modal-lg imagecrop " data-keyboard="false" data-backdrop="static" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-        <div class="modal-dialog modal-lg" style=" height: 100vh;">
+        <div class="modal-dialog modal-lg" >
           <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Cover:</h5>
@@ -244,10 +244,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="img-container" >
+                <div class="img-container"  >
                     <div class="row">
-                        <div class="col-md-11">
-                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                        <div class="col-md-10">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749" style="width: 100%; heght:100%;">
                         </div>
                     </div>
                 </div>
@@ -298,7 +298,7 @@
               aspectRatio: 800 / 600,
               minCropBoxWidth: 800,
               minCropBoxHeight: 600,
-              viewMode: 3,
+              viewMode: 2,
 
               // cropBoxResizable: false,
 
