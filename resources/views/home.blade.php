@@ -215,7 +215,7 @@
             <div class="row">
                 <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 50rem !important;padding: 0 !important; ">
                   <div class="card-header bg-white d-flex justify-content-between">
-                    <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
+                    <h5 class="card-title p-2 ">{{$item->user->username}}</h5>
                     <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
 
                     <p class="card-text p-2">{{$item->view}}</p>
