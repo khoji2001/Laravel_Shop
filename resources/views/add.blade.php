@@ -78,12 +78,20 @@
       var checkBox = document.getElementById("myCheck");
       // Get the output text
       var text = document.getElementById("text");
+    //   var message = document.getElementById("message");
+
     
       // If the checkbox is checked, display the output text
       if (checkBox.checked == true){
         text.style.display = "block";
+        // message.style.display = "block";
+
+
       } else {
         text.style.display = "none";
+        // message.style.display = "none";
+
+
       }
     }
     function myFunctionimage() {
@@ -153,7 +161,8 @@
             
             <textarea id="text" name="text" maxlength="350" style="display:none; height:200px; font-size: 18px; font-family:Times, serif;" placeholder="350 characters" ></textarea><br>
             {{-- <input type="text" id="text" name="text" style="display:none" ><br> --}}
-    
+            <p style="display:none;"id="message"></p>
+
             <label for="image">Image:</label><input type="checkbox" id="myCheckimage" onclick="myFunctionimage()"><br>
     
             <input type="file" id="image"  name="image" style="display:none" accept="image/png, image/jpeg , image/jpg"><br>
@@ -296,4 +305,15 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
     
     
 </body>
+{{-- <script>
+    var area = document.getElementById("text");
+    var message = document.getElementById("message");
+    var maxLength = 50;
+    var checkLength = function() {
+        if(area.value.length < maxLength) {
+            message.innerHTML = (maxLength-area.value.length) + " characters remaining";
+        }
+    }
+    setInterval(checkLength, 300);
+</script> --}}
 </html>

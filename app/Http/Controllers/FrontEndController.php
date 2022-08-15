@@ -182,13 +182,13 @@ class FrontEndController extends Controller
         return $cover;
     }
     public function firstvid(){
-        if(auth()->user()->admin==1){
-            return view("video");
-        }
-        else{
-            return redirect("/");
-        }
-        
+        // if(auth()->user()->admin==1){
+        //     return view("video");
+        // }
+        // else{
+        //     return redirect("/");
+        // }
+        return view("video");
     }
     public function firstvid_post(Request $request){
         // dd($request);
