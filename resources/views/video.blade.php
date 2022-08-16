@@ -10,12 +10,12 @@
         <form method="POST" action="{{ '/firstvid' }}" enctype="multipart/form-data" >
             @csrf
 
-            <input type="file" id="video" name="video" onchange="uploadFile()"   accept="video/mp4,video/x-m4v,video/*" >    
+            <input type="file" id="video" name="video"  accept="video/mp4,video/x-m4v,video/*" >    
 
             <input type="submit" value="Submit">
         </form>
 </body>
-<script>
+{{-- <script>
 function _(el) {
     return document.getElementById(el);
   }
@@ -54,5 +54,5 @@ function _(el) {
   function abortHandler(event) {
     _("status").innerHTML = "Upload Aborted";
   }
-</script>
+</script> --}}
 </html>
