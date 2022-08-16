@@ -15,44 +15,63 @@
             <input type="submit" value="Submit">
         </form>
 </body>
-{{-- <script>
-function _(el) {
-    return document.getElementById(el);
-  }
-  
-  function uploadFile() {
-    var file = _("video").files[0];
-    // alert(file.name+" | "+file.size+" | "+file.type);
-    var formdata = new FormData();
-    formdata.append("video", file);
-    var ajax = new XMLHttpRequest();
-    ajax.upload.addEventListener("progress", progressHandler, false);
-    ajax.addEventListener("load", completeHandler, false);
-    ajax.addEventListener("error", errorHandler, false);
-    ajax.addEventListener("abort", abortHandler, false);
-    ajax.open("POST", "file_upload_parser.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-    //use file_upload_parser.php from above url
-    ajax.send(formdata);
-  }
-  
-  function progressHandler(event) {
-    _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
-    var percent = (event.loaded / event.total) * 100;
-    _("progressBar").value = Math.round(percent);
-    _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
-  }
-  
-  function completeHandler(event) {
-    _("status").innerHTML = event.target.responseText;
-    _("progressBar").value = 0; //wil clear progress bar after successful upload
-  }
-  
-  function errorHandler(event) {
-    _("status").innerHTML = "Upload Failed";
-  }
-  
-  function abortHandler(event) {
-    _("status").innerHTML = "Upload Aborted";
-  }
-</script> --}}
+
 </html>
+
+
+
+
+
+{{-- <!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel Bootstrap 5 Progress Bar Example - ItSolutionStuff.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 900px">
+         
+        <div class="alert alert-primary mb-4 text-center">
+           <h2 class="display-6">Laravel File Upload with Ajax Progress Bar Example - ItSolutionStuff.com</h2>
+        </div>  
+        <form id="fileUploadForm" method="POST" action="{{ "firstvid/" }}" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group mb-3">
+                <input name="file" type="file" class="form-control">
+            </div>
+            <div class="form-group">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="d-grid mt-4">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $('#fileUploadForm').ajaxForm({
+                    beforeSend: function () {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        $('.progress .progress-bar').css("width", percentage+'%', function() {
+                          return $(this).attr("aria-valuenow", percentage) + "%";
+                        })
+                    },
+                    complete: function (xhr) {
+                        console.log('File has uploaded');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> --}}
