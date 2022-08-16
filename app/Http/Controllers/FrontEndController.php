@@ -194,7 +194,7 @@ class FrontEndController extends Controller
         $file = new Filesystem;
         $file->cleanDirectory(public_path('videos/first'));
         // dd($request->video);
-        $video = "firstvideo". "." . $request->video->extension();
+        $video = time() . "." . $request->video->extension();
         $request->video->move(public_path("videos/first"),$video);
         return redirect("/");
     }
