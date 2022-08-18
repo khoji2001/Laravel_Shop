@@ -368,12 +368,13 @@
   }
 });
 </script>
-
-
-
-
-    
-
+<script>
+  function loader() {
+      document.getElementById('loading').style.display = "block"
+      document.getElementById('origin').style.display = "none"
+  
+  }
+</script>
 
 </body>
 </html>

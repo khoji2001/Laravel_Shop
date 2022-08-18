@@ -191,12 +191,16 @@ class FrontEndController extends Controller
         return view("video");
     }
     public function firstvid_post(Request $request){
+        // dd("ok");
         $file = new Filesystem;
         $file->cleanDirectory(public_path('videos/first'));
         // dd($request->video);
-        // sleep(10);
         $video = time() . "." . $request->video->extension();
         $request->video->move(public_path("videos/first"),$video);
+        // sleep(10);
+        // dd("ok");
+
+
         return redirect("/");
     }
 }
