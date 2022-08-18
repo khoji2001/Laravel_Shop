@@ -86,10 +86,10 @@
     <div class="container-fluid ">
       <div class="row">
         <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto">
-          <div class="card-body bg-white d-flex justify-content-center">
+          <div class="card-body bg-white  justify-content-center">
             <div class=" bg-white mx-auto justify-content-center">
-                <h5 class="card-title p-2">{{$item->subject}}</h5>
-                <h6 class="card-text p-2">{{$item->text}}</h6>
+                <h5 style="overflow-y: auto;" class="card-title p-2">{{$item->subject}}</h5>
+                <h6 style="overflow-y: auto;" class="card-text p-2">{{$item->text}}</h6>
             </div>
           </div>
         {{-- <div class="subject" style="font-weight: bold;

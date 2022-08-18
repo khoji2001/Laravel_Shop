@@ -262,7 +262,7 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
 
     <div class="row">
         <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
-          <div class="card-header bg-white d-flex justify-content-center">
+          <div class="card-header bg-white  justify-content-center">
             <h4 class="card-title  p-2 " >{{$item->subject}}</h4>
             {{-- <p class="card-text p-2">starts</p> --}}
             {{-- <p class="card-text p-2">{{$item->view}}</p> --}}
