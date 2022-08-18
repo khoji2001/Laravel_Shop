@@ -87,7 +87,7 @@ class SessionController extends Controller
         }
         
         $session = Session::create($data);
-        
+        // sleep(10);
         return redirect("api/session/add/{$int}");
 
         

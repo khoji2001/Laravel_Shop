@@ -147,8 +147,9 @@
         <a href="#" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
         
     </nav>
+<div id ="origin" style="display: block">
 
-    @if($sessions->count() < 10)
+    @if($sessions->count() < 30)
     
     <div class="container_l">
         <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
@@ -176,7 +177,7 @@
     
     
     
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Submit" onclick="loader();">
         </form><br><br>
         <div style="color: #ff0000;" >
         <ul>
@@ -190,7 +191,7 @@
     </div><br>
     @else
     <div class="container-fluid d-flex align-items-center justify-content-center">
-        Max number of sessions is 60 session</div>
+        Max number of sessions is 30 session</div>
     @endif
     
     
@@ -293,6 +294,18 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
 </div>
 @endforeach
 
+</div>
+
+<div id ="loading" style="display: none">
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <span class="sr-">uploading...</span>
+    </div>
+</div>
+
     {{-- <div class="count">
     <form action="/api/finish" method="post">
         <div class="containerbut">
@@ -316,4 +329,12 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
     }
     setInterval(checkLength, 300);
 </script> --}}
+
+<script>
+    function loader() {
+        document.getElementById('loading').style.display = "block"
+        document.getElementById('origin').style.display = "none"
+    
+    }
+    </script>
 </html>

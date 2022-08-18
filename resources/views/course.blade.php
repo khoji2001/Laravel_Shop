@@ -44,6 +44,9 @@
     <title>Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css"/>
@@ -186,43 +189,45 @@
       </div>
     @endif --}}
     
-    <div class="container_l">
-        <form id="myform" name="myform" method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
-            @csrf
-            <label for="subject">Subject:</label><br>
-            <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters"><br><br>
-            
-            <label for="description">Description:</label><br>
-            <input type="text" id="description" maxlength="100" placeholder="100 characters" name="description"><br><br>
-    
-            <label for="cover">Cover:</label><br>
-            {{-- <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br> --}}
-            
-            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br><br>
-            <input type="hidden" name="base64image" name="base64image" id="base64image">
-            {{-- <img id="blah" src="#" alt="your image" /> --}}
+    <div id ="origin" style="display: block">
 
-            {{-- <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br> --}}
-            {{-- onclick="myFunction()" --}}
-            <div class="avatar-preview container2">
-                @php
-                    if(!empty($image->image) && $image->image!='' && file_exists(public_path('images/'.$image->image))){
-                      $image =$image->image;
-                    }else{
-                      $image = 'default.png';
-                    }
-                    $url = url('public/images/'.$image);
-                    $imgs =  "background-image:url($url)";
-                      
-                @endphp
-                <div id="imagePreview" style="{{$imgs}};">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                </div>
-            </div>
-            <input type="submit" value="Submit" id="form_sub">
-        </form>
-    </div><br><br>
+      <div class="container_l">
+          <form id="myform" name="myform" method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
+              @csrf
+              <label for="subject">Subject:</label><br>
+              <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters"><br><br>
+              
+              <label for="description">Description:</label><br>
+              <input type="text" id="description" maxlength="100" placeholder="100 characters" name="description"><br><br>
+      
+              <label for="cover">Cover:</label><br>
+              {{-- <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br> --}}
+              
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br><br>
+              <input type="hidden" name="base64image" name="base64image" id="base64image">
+              {{-- <img id="blah" src="#" alt="your image" /> --}}
 
+              {{-- <label for="Prerequisites">Prerequisites:</label><input type="checkbox" id="myCheck" name="Prerequisites" ><br><br> --}}
+              {{-- onclick="myFunction()" --}}
+              <div class="avatar-preview container2">
+                  @php
+                      if(!empty($image->image) && $image->image!='' && file_exists(public_path('images/'.$image->image))){
+                        $image =$image->image;
+                      }else{
+                        $image = 'default.png';
+                      }
+                      $url = url('public/images/'.$image);
+                      $imgs =  "background-image:url($url)";
+                        
+                  @endphp
+                  <div id="imagePreview" style="{{$imgs}};">
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  </div>
+              </div>
+              <input type="submit" value="Submit" id="form_sub" onclick="loader();">
+          </form>
+      </div><br><br>
+    </div>
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -257,6 +262,16 @@
                 <button type="button" class="btn btn-primary crop" id="crop">Crop</button>
               </div>
           </div>
+        </div>
+      </div>
+
+      <div id ="loading" style="display: none">
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <span class="sr-">uploading...</span>
         </div>
       </div>
   

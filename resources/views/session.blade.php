@@ -92,6 +92,7 @@ function myFunctionimage() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
@@ -159,35 +160,36 @@ function myFunctionimage() {
         </div>
     </header>
     <div><br><br><br>
-    
-    <div class="container">
-        <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
-            @csrf
-            <label for="subject">Subject:</label><br>
-            <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters" ><br><br>
-            
-            <label  for="text">Text:</label>
-            <input type="checkbox" id="myCheck" onclick="myFunction()"><br>
-            
-            <textarea id="text" name="text" maxlength="350" style="display:none; height:200px; font-size: 18px; font-family:Times, serif;" placeholder="300 characters" ></textarea><br>
-            {{-- <input type="text" id="text" name="text" style="display:none" ><br> --}}
-    
-            <label for="image">Image:</label><input type="checkbox" id="myCheckimage" onclick="myFunctionimage()"><br>
-    
-            <input type="file" id="image"  name="image" style="display:none" accept="image/png, image/jpeg , image/jpg"><br>
-            
-    
-            <label for="video">Video:</label><input type="checkbox" id="myCheckvideo" onclick="myFunctionvideo()"><br>
-            <input type="file" id="video" name="video"  style="display:none" accept="video/mp4,video/x-m4v,video/*" ><br>
-    
-    
-            <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-    
-    
-    
-            <input type="submit" value="Submit">
-        </form><br><br>
-    
+    <div id ="origin" style="display: block">
+      <div class="container">
+          <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
+              @csrf
+              <label for="subject">Subject:</label><br>
+              <input type="text" id="subject" name="subject" maxlength="80" placeholder="80 characters" ><br><br>
+              
+              <label  for="text">Text:</label>
+              <input type="checkbox" id="myCheck" onclick="myFunction()"><br>
+              
+              <textarea id="text" name="text" maxlength="350" style="display:none; height:200px; font-size: 18px; font-family:Times, serif;" placeholder="300 characters" ></textarea><br>
+              {{-- <input type="text" id="text" name="text" style="display:none" ><br> --}}
+      
+              <label for="image">Image:</label><input type="checkbox" id="myCheckimage" onclick="myFunctionimage()"><br>
+      
+              <input type="file" id="image"  name="image" style="display:none" accept="image/png, image/jpeg , image/jpg"><br>
+              
+      
+              <label for="video">Video:</label><input type="checkbox" id="myCheckvideo" onclick="myFunctionvideo()"><br>
+              <input type="file" id="video" name="video"  style="display:none" accept="video/mp4,video/x-m4v,video/*" ><br>
+      
+      
+              <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
+      
+      
+      
+              <input type="submit" value="Submit" onclick="loader();">
+          </form><br><br>
+      
+      </div>
     </div>
     <ul>
         @foreach ($errors->all() as $error)
@@ -209,5 +211,23 @@ function myFunctionimage() {
     </div>
 
 
+    <div id ="loading" style="display: none">
+      <div class="text-center">
+          <div class="spinner-border" role="status">
+          </div>
+      </div>
+      <div class="d-flex justify-content-center">
+          <span class="sr-">uploading...</span>
+      </div>
+    </div>
+
+
 </body>
+<script>
+  function loader() {
+      document.getElementById('loading').style.display = "block"
+      document.getElementById('origin').style.display = "none"
+  
+  }
+</script>
 </html>

@@ -71,8 +71,10 @@
     <div class="container ">
         <div class="row ">
             <div class="justify-content-center mx-auto d-flex mb-3 mt-3">
-
-            
+                <h1>add to Prerequisites</h1>
+            </div>
+            <div class="justify-content-center mx-auto d-flex mb-3 mt-3">
+                
                 <form action="{{ asset('/') }}" method="get">
                     {{-- <input type = "hidden" id="id" name = "id" value = {{(int)$id}}/> --}}
                     <input type="submit" class=" btn btn-success btn-lg" style="  background-color: rgb(19, 16, 245); color: #fff;" value="Publish">

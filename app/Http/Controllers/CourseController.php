@@ -97,6 +97,7 @@ class CourseController extends Controller
             'user_id' => auth()->user()->id,
             
         ]);
+        // sleep(10);
         return redirect("api/session?id=$course->id");
         
     
