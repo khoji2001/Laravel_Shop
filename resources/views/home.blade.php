@@ -6,7 +6,7 @@
     {{-- <meta http-equiv="refresh" content="5" > --}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple</title>
-    <link rel="icon" type="image/x-icon" href="/images/1657803046.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
 
     
     {{-- <link rel="stylesheet" href="styles/reset.min.css" />
@@ -139,11 +139,14 @@
       </nav> --}}
 
       <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
+        <img src="images/logook.png" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
+
         <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
+
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+        </button>
         <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
             <ul class="navbar-nav w-100 justify-content-center ">
                 <form class="mx-2 my-auto d-inline w-100" role="search" method="post" action={{"/search"}}>

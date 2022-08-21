@@ -1,40 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Course</title>
-</head>
-<body>
-    <form method="POST" action="{{ route('course') }}" enctype="multipart/form-data" >
-        @csrf
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject"><br><br>
-        
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br><br>
-
-        <label for="cover">Cover:</label><br>
-        <input type="file" id="cover" name="cover" accept="image/png, image/jpeg , image/jpg"><br>
-        <small>png,jpg,jpeg</small><br><br>
-        
-
-        <input type="submit" value="Submit">
-    </form>
-<ul>
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@if(session()->has('message'))
-<div class="alert alert-success">
-    {{ session()->get('message') }}
-</div>
-@endif
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +7,8 @@
     <title>Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
@@ -54,109 +17,9 @@
     <link href="{{ asset('styles/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/header-1.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('styles/reset.min.css') }}" rel="stylesheet" type="text/css" >
-    {{-- <style>
-  body{
-    background-color: #dfdfdf;
-  }
-
-  .container {
-    max-width: 960px;
-    margin: 30px auto;
-    padding: 20px;
-  }
-  h1 {
-    font-size: 20px;
-    text-align: center;
-    margin: 20px 0 20px;
-  }
-  h1 small {
-    display: block;
-    font-size: 15px;
-    padding-top: 8px;
-    color: gray;
-  }
-  .avatar-upload {
-    position: relative;
-    max-width: 205px;
-    margin: 50px auto;
-  }
-  .avatar-upload .avatar-edit {
-    position: absolute;
-    right: 12px;
-    z-index: 1;
-    top: 10px;
-  }
-  .avatar-upload .avatar-edit input {
-    display: none;
-  }
-  .avatar-upload .avatar-edit input + label {
-    display: inline-block;
-    width: 34px;
-    height: 34px;
-    margin-bottom: 0;
-    border-radius: 100%;
-    background: #FFFFFF;
-    border: 1px solid transparent;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-    font-weight: normal;
-    transition: all 0.2s ease-in-out;
-  }
-  .avatar-upload .avatar-edit input + label:hover {
-    background: #f1f1f1;
-    border-color: #d6d6d6;
-  }
-  .avatar-upload .avatar-edit input + label:after {
-    content: "\f040";
-    font-family: 'FontAwesome';
-    color: #757575;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin: auto;
-  }
-  .avatar-upload .avatar-preview {
-    width: 800px;
-    height: 600px;
-    position: relative;
-    border-radius: 100%;
-    border: 6px solid #F8F8F8;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-  }
-  .avatar-upload .avatar-preview > div {
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .container2 .btn {
-      position: absolute;
-      top: 90%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-    
-      color: white;
-      font-size: 16px;
-
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      text-align: center;
-  }
-  #image {
-    display: block;
-    /* This rule is very important, please don't ignore this */
-    max-width: 100%;
-}
-
-</style> --}}
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css"/>
+  
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css"/>
 
 </head>
 
@@ -267,12 +130,11 @@
 
       <div id ="loading" style="display: none">
         <div class="text-center">
-            <div class="spinner-border" role="status">
-            </div>
+
+            <h1 class="sr-">uploading...</h1>
+
         </div>
-        <div class="d-flex justify-content-center">
-            <span class="sr-">uploading...</span>
-        </div>
+        
       </div>
   
 </body>
@@ -315,37 +177,6 @@
               minCropBoxHeight: 600,
               viewMode: 2,
 
-              // cropBoxResizable: false,
-
-
-              // aspectRatio: 16 / 9,
-              // dragMode: 'move',
-              // viewMode: 3,
-              // aspectRatio: 1
-
-              // autoCrop : true,
-              // strict: false,
-              // background: false,
-              // autoCropArea: 1,
-              // aspectRatio: 800 / 600,
-
-
-              // aspectRatio: 1.333,
-              // viewMode: 1,
-              // dragMode: 'move',
-              // autoCropArea: 1,
-            // autoCropArea: 0.65,
-            // restore: false,
-            // guides: false,
-            // center: false,
-            // highlight: false,
-            // cropBoxMovable: false,
-            // cropBoxResizable: false,
-            // toggleDragModeOnDblclick: true,
-            // data:{ //define cropbox size
-            //   width: 240,
-            //   height:  90,
-            // },
           });
       }).on('hidden.bs.modal', function() {
           cropper.destroy();
