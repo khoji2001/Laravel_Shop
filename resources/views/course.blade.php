@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logook.png') }}">
+
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
     
@@ -27,14 +28,15 @@
     <div><br>
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
+          
+
           <a href="/" class="brand">Simple</a>
           <nav class="nav">
             
             <ul class="nav__wrapper">
             
-                <li class="nav__item">  
-                    <a href="#"></a>
-                </li>
+                <img src="{{ asset('images/logook.png') }}" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
+
                        
             </ul>
           </nav>

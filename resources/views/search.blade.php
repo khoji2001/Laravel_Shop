@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logook.png') }}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -81,8 +83,8 @@
                 <div class="card-header bg-white d-flex justify-content-between">
             
                     <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
-                    <p class="card-text p-2">starts</p>
-                    <p class="card-text p-2">{{$item->view}}</p>
+                    <p class="card-text p-2">{{$item->session()->count()}}sessions</p>
+                    <p class="card-text p-2">{{$item->view}}views</p>
 
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                 </div>
@@ -92,7 +94,6 @@
                     <div class="card-body">
                         <div class=" bg-white d-flex justify-content-between">
                             <h5  style="overflow-y: auto;" class="card-title p-2">{{$item->subject}}</h5>
-                            <p class="card-text p-2">{{$item->session()->count()}} sessions</p>
                         </div>
                         <div class=" bg-white d-flex justify-content-between">
                         <h6  style="overflow-y: auto;" class="card-title p-2">{{$item->description}}</h6>

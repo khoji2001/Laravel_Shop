@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ok</title>
+    <title>Simple</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logook.png') }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,27 +17,12 @@
 </head>
 
 <body>
-    {{-- <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="/" class="brand">Simple</a>
-          <nav class="nav">
-            
-            <ul class="nav__wrapper">
-                <form method="post" action={{"/search/check?id=$id"}} >
-                    @csrf
-                    <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
-                    <input type="submit" value=&#x1F50D; style="padding-right: 6.50em;">
-                </form>
-                <li class="nav__item">  
-                    <a href="#">{{$search}}</a>
-                </li>
-                       
-            </ul>
-          </nav>
-        </div>
-    </header> --}}
+
     <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
+        <img src="{{ asset('images/logook.png') }}" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
+
         <a href="" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
+        
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,8 +52,7 @@
             </ul>
         </div>
     </nav>
-    {{-- <a href="{{ route('login') }}">login<a><br>
-    <a href="{{ route('register') }}">register<a> --}}
+
     
     <div class="container ">
         <div class="row ">
@@ -156,7 +142,9 @@
                     @endif
                         <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
                         {{-- <p class="card-text p-2"></p> --}}
-                        <p class="card-text p-2">{{$item->view}}starts</p>
+                        {{-- <p class="card-text p-2">{{$item->session()->count()}} sessions</p> --}}
+
+                        <p class="card-text p-2">{{$item->view}}views</p>
 
                         {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                     </div>
