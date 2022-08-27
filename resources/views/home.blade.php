@@ -20,95 +20,6 @@
 
 
 <body>
-    {{-- <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="/" class="brand">Simple</a>
-          <nav class="nav">
-            
-            
-            <ul class="nav__wrapper">
-              
-                <form method="post" action={{"/search"}} >
-                    @csrf
-                    <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
-                    <input type="submit" value=&#x1F50D; style="padding-right: 6.50em;">
-                </form>
-                @auth
-                    
-                    <li class="nav__item"><a href="#">{{auth()->user()->username}}</a></li>
-                    
-                    <li class="nav__item">
-                        <a href="{{ route('course') }}">create your course</a>
-                    </li>
-
-                    <li class="nav__item">  
-                        <a href="{{ route('logout') }}" >Logout</a>
-                    </li>
-                @else
-                    <li class="nav__item">  
-                        <a href="{{ route('login') }}">Log in</a>
-                    </li>
-                        @if (Route::has('register'))
-                        <li class="nav__item">  
-                            <a href="{{ route('register') }}" >Register</a>
-                        </li><br><br>
-                        @endif
-                @endauth
-            </ul>
-          </nav>
-        </div>
-    </header> --}}
-
-    {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand  d-flex w-50 mr-auto" href="#">Simple</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav  mb-2 mb-lg-0 ">
-                <form class="d-flex" role="search" method="post" action={{"/search"}}>
-                    @csrf
-                  <input name="search" id="search"  class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-              
-            </ul>
-          </div>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav  mb-2 mb-lg-0 ">
-
-                  @auth
-                  <li class="nav-item">
-                    <a class="nav-link "href="#">{{auth()->user()->username}}</a>
-                  </li>
-                  
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('course') }}">New Course</a>
-                  </li>
-                  
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                  </li>
-                @else
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                  </li>
-                            
-                @endauth
-              
-            </ul>
-          </div>
-
-            
-            
-          </div>
-        </div>
-      </nav> --}}
 
       <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #033E5B">
         <img src="images/logook.png" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
@@ -195,7 +106,6 @@
 
                     <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->view}} views</p>
 
-                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                   </div>
                     <img 
                     src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
@@ -206,61 +116,17 @@
 
                         </div>
                       <div class=" bg-white d-flex justify-content-between">
-                        <h5  style="overflow-y: auto; font-size: calc(0.6em + 0.7vw);" class="card-title p-2">{{$item->description}}</h5>
+                        <h5  style="overflow-y: auto; font-size: calc(0.7em + 0.7vw);" class="card-title p-2">{{$item->description}}</h5>
                         <h6 class="card-text p-2" style="font-size: calc(0.5em + 0.5vw);">{{date('d-m-Y', strtotime($item->updated_at))}}</h6>
                       </div>
                     </div>
 
-                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                     </div>
                 </div>
             </div>
         </div>
       </div>
     @endforeach
-
-
-    {{-- <div id="loading" class="loader"></div> --}}
-
-    {{-- @foreach ($courses as $item)
-    <div onclick="window.open('course/{{$item->id}}','mywindow');" style="cursor: pointer;">
-        <div class="container_n">
-            <div class="card">
-            <div class="card-header">
-                <div class="user">
-                    <div class="user-info">
-                    <h5>{{$item->user->username}}</h5>
-                    <small>{{date('d-m-Y', strtotime($item->updated_at))}}</small>
-                    </div>
-                </div>
-                <img src="{{asset("images/" . $item->cover)}}" alt="rover" >
-            </div>
-            <div class="card-body_n">
-                <div class="subject">
-                {{$item->subject}}
-                </div>
-                <p>
-                    {{$item->description}}
-                </p>
-                
-            </div>
-            </div>
-        </div>
-    </div>
-    @endforeach --}}
-    
-    {{-- <footer class="site-footer">
-        <div class="wrapper site-header__wrapper">
-            <nav class="nav">
-                <ul class="nav__wrapper">
-                    
-                    <li class="nav__item"><a href="#">Break it Down , Get to the point</a></li>
-
-                </ul>
-            </nav>
-          </div>
-    </footer> --}}
-
 
 </body>
 </html>

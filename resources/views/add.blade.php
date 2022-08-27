@@ -159,43 +159,6 @@
             </div>
         </div>
     </div>
-    {{-- <div style="" class="countt">
-        
-      </div> --}}
-
-    {{-- @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-    @endif --}}
-
-    {{-- @foreach ($sessions as $item)
-
-    <div class="container" style="background: #ffff">
-        <div class="row">
-            <div class="count">{{ $loop->iteration }}</div>
-
-                <div class="container_s">
-                    <div class="subject" >{{$item->subject}}</div><br>
-                    <div >{{$item->text}}</div><br>
-                    <img src="{{asset("images/" . $item->image)}}" class="w-4 mb-8 shadow-xl" 
-                        width="250"
-                        alt=""><br>
-                    @if(isset($item->video))
-                    <video width="300" controlsList="nodownload" controls>
-                        <source src='{{asset("viidd/$item->video")}}'
-                                type="video/mp4">
-                    
-                        Sorry, your browser doesn't support embedded videos.
-                    </video><br>
-                    @endif
-                    
-                    
-
-                </div><br>
-        </div>
-    </div>
-    @endforeach --}}
 
 @foreach ($sessions as $item)
 <div class="d-flex justify-content-center" style="font-weight: bold;
@@ -208,10 +171,7 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
         <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 55rem;padding: 0 !important; ">
           <div class="card-header bg-white  justify-content-center">
             <h4 class="card-title  p-2 " >{{$item->subject}}</h4>
-            {{-- <p class="card-text p-2">starts</p> --}}
-            {{-- <p class="card-text p-2">{{$item->view}}</p> --}}
-
-            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+            
           </div>
             <img 
             src="{{asset("images/" . $item->image)}}" class="card-img-top" 
@@ -250,29 +210,8 @@ font-size: 40px; ">{{ $loop->iteration }}</div>
     </div>
 </div>
 
-    {{-- <div class="count">
-    <form action="/api/finish" method="post">
-        <div class="containerbut">
-            <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-            <input type="submit" value="Publish" />
-        </div>
-    </form>
-    </div> --}}
-
-    
-    
 </body>
-{{-- <script>
-    var area = document.getElementById("text");
-    var message = document.getElementById("message");
-    var maxLength = 50;
-    var checkLength = function() {
-        if(area.value.length < maxLength) {
-            message.innerHTML = (maxLength-area.value.length) + " characters remaining";
-        }
-    }
-    setInterval(checkLength, 300);
-</script> --}}
+
 
 <script>
     function loader() {

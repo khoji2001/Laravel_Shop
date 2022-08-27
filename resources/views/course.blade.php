@@ -43,16 +43,7 @@
         </div>
     </header>
     <div><br><br>
-    {{-- @if(Session::get('message'))
-      <div class="alert alert-primary" role="alert">
-        {{ Session::get('message') }}
-      </div>
-    @endif
-    @if(Session::get('error'))
-      <div class="alert alert-danger" role="alert">
-        {{ Session::get('error') }}
-      </div>
-    @endif --}}
+
     
     <div id ="origin" style="display: block">
 

@@ -47,8 +47,7 @@
                   <li class="nav-item">
                     <a class="nav-link "href="#">{{$search}}</a>
                   </li>
-                
-
+            
             </ul>
         </div>
     </nav>
@@ -68,56 +67,7 @@
             </div>
         </div>
     </div>
-        {{-- <input type="checkbox" name="colors[]" value="red" id="color_red" /> --}}
-        
-        
-        
-        
-        
-        {{-- @foreach ($courses as $item)
-           
-            <div class="container_n">
-                <div class="card">
-                    <div class="card-header">
-                    <div class="user">
-                        <div class="user-info-right">
-                            @if(!$leadIds->where('post_id', $id)->contains('related_id',$item->id))
-                
-                                <form action="{{ route('add_related') }}" method="post">
-                                    @csrf
-                                    <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
-                                    <input type = "hidden" name = "related_id" value = {{(int)$item->id}}/>
-                        
-                                    <input type="submit" value="add to pre">
-                                </form>
-                            
-                            @else
-                                <input type="submit" value="selected" style="  background-color: rgb(41, 250, 65); color: black;">
-                            @endif
-                        </div>
-                        <div class="user-info">
-                            <h5>{{$item->user->username}}</h5>
-                            <small>{{date('d-m-Y', strtotime($item->updated_at))}}</small>
-                        </div>
-                    </div>
-                    <img src="{{asset("images/" . $item->cover)}}" alt="rover" >
-                    </div>
-                    <div class="card-body_n">
-                    <h4>
-                        {{$item->subject}}
-                    </h4><br>
-                    <p>
-                        {{$item->description}}
-                    </p>
-                    
-                    </div>
-                </div>
-            </div>
-
-        @endforeach --}}
-
-
-
+    
 
         @foreach ($courses as $item)
        
@@ -140,11 +90,11 @@
                     @else
                         <input type="submit" value="selected" class="btn btn-success" >
                     @endif
-                        <h5 class="card-title  p-2 " >{{$item->user->username}}</h5>
+                        <h5 style="overflow-y: auto;" class="card-title  p-2 " >{{$item->user->username}}</h5>
                         {{-- <p class="card-text p-2"></p> --}}
                         {{-- <p class="card-text p-2">{{$item->session()->count()}} sessions</p> --}}
 
-                        <p class="card-text p-2">{{$item->view}}views</p>
+                        <p style="overflow-y: auto;" class="card-text p-2">{{$item->view}}views</p>
 
                         {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                     </div>
@@ -172,17 +122,7 @@
     @if($courses->isEmpty())
         <div>Not found</div>
     @endif
-    {{-- <footer class="site-footer">
-        <div class="wrapper site-header__wrapper">
-            <nav class="nav">
-                <ul class="nav__wrapper">
-                    
-                    <li class="nav__item"><a href="#">Break it Down , Get to the point</a></li>
 
-                </ul>
-            </nav>
-          </div>
-    </footer> --}}
 </body>
 </html>
 

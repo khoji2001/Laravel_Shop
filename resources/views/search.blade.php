@@ -18,25 +18,7 @@
 </head>
 
 <body>
-    {{-- <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="/" class="brand">Simple</a>
-          <nav class="nav">
-            
-            <ul class="nav__wrapper">
-                <form method="post" action={{"/search"}} >
-                    @csrf
-                    <input type="text" name="search" id="search" placeholder="search..." style=" width: 400px; margin-top:14px;">
-                    <input type="submit" value=&#x1F50D; style="padding-right: 6.50em;">
-                </form>
-                <li class="nav__item">  
-                    <a href="#">{{$search}}</a>
-                </li>
-                       
-            </ul>
-          </nav>
-        </div>
-    </header> --}}
+   
     <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #033E5B">
       <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
       
@@ -68,11 +50,7 @@
           </ul>
       </div>
   </nav><br>
-    {{-- <a href="{{ route('login') }}">login<a><br>
-    <a href="{{ route('register') }}">register<a> --}}
     
-
-
     @foreach ($courses as $item)
     <div onclick="window.open('course/{{$item->id}}','_self');" style="cursor: pointer;">
   
@@ -86,7 +64,6 @@
                     <p class="card-text p-2">{{$item->session()->count()}}sessions</p>
                     <p class="card-text p-2">{{$item->view}}views</p>
 
-                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                 </div>
                     <img 
                     src="{{asset("images/" . $item->cover)}}" class="card-img-top" 
@@ -100,7 +77,6 @@
                         <p class="card-text p-2">{{date('d-m-Y', strtotime($item->updated_at))}}</p>
                     </div>
 
-                    {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                     </div>
                 </div>
             </div>
@@ -111,16 +87,6 @@
     @if($courses->isEmpty())
         <div>Not found</div>
     @endif
-    {{-- <footer class="site-footer">
-        <div class="wrapper site-header__wrapper">
-            <nav class="nav">
-                <ul class="nav__wrapper">
-                    
-                    <li class="nav__item"><a href="#">Break it Down , Get to the point</a></li>
 
-                </ul>
-            </nav>
-          </div>
-    </footer> --}}
 </body>
 </html>

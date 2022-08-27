@@ -45,18 +45,7 @@
     <img src="{{ asset('images/logook.png') }}" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
 
   </nav>
-  {{-- @php
-      echo $related->isEmpty()
 
-      @endphp --}}
-
-
-      {{-- ok{{$related}}--------{{$sessions}} --}}
-    {{-- @foreach ($sessions as $it)
-      <div class="container_s">
-        <a href="course/{{$it->id}}">{{$it->subejct}}op</a>
-      </div>
-    @endforeach --}}
     <div class="container-fluid d-flex align-items-center justify-content-center">
       Prerequisites<input type="checkbox" id="myCheck" name="Prerequisites" onclick="myFunction()" >
     </div>
@@ -95,12 +84,7 @@
                 <h6 style="overflow-y: auto;" class="card-text p-2">{{$item->text}}</h6>
             </div>
           </div>
-        {{-- <div class="subject" style="font-weight: bold;
-        font-family:Times New Roman;
-        font-size: 30px;" >{{$item->subject}}</div><br> --}}
-        {{-- <div >{{asset("videos/" . $item->video)}}{{URL::asset("/videos/$item->video")}} </div><br> --}}
-        {{-- course{{$course}}0000000000{{$related}} --}}
-        {{-- <p >{{$item->text}}</p><br><br> --}}
+  
         @if(isset($item->image))
         <img src="{{asset("images/" . $item->image)}}" class="card-img-top justify-content-center mx-auto" style="max-width:800px;" alt="Responsive image"><br>
         @endif
