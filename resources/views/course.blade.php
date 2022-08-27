@@ -133,7 +133,7 @@
       <div id ="loading" style="display: none">
         <div class="text-center">
 
-            <h1 class="sr-">uploading...</h1>
+            <h1 style="margin-top: 20px;">uploading...</h1>
 
         </div>
         

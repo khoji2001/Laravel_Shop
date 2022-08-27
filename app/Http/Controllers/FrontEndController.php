@@ -69,7 +69,7 @@ class FrontEndController extends Controller
     {
 
         $this->validate($request,[
-            'username' => 'required|max:200|unique:users,username',
+            'username' => 'required|max:30|unique:users,username',
             'email' => 'required|email|max:200|unique:users,email',
             'password' => 'required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required'
@@ -182,23 +182,28 @@ class FrontEndController extends Controller
         return $cover;
     }
     public function firstvid(){
-        // if(auth()->user()->admin==1){
-        //     return view("video");
-        // }
-        // else{
-        //     return redirect("/");
-        // }
-        return view("video");
+        if(auth()->user()->admin==1){
+            return view("video");
+        }
+        else{
+            return redirect("/");
+        }
     }
     public function firstvid_post(Request $request){
-        // dd("ok");
-        $file = new Filesystem;
-        $file->cleanDirectory(public_path('videos/first'));
-        // dd($request->video);
-        $video = time() . "." . $request->video->extension();
-        $request->video->move(public_path("videos/first"),$video);
-        // sleep(10);
-        // dd("ok");
+        if(auth()->user()->admin==1){
+                    // dd("ok");
+            $file = new Filesystem;
+            $file->cleanDirectory(public_path('videos/first'));
+            // dd($request->video);
+            $video = time() . "." . $request->video->extension();
+            $request->video->move(public_path("videos/first"),$video);
+            // sleep(10);
+            // dd("ok");
+        }
+        else{
+            return redirect("/");
+        }
+
 
 
         return redirect("/");

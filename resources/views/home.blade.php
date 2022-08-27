@@ -110,7 +110,7 @@
         </div>
       </nav> --}}
 
-      <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #0B3D91">
+      <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #033E5B">
         <img src="images/logook.png" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
 
         <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
@@ -190,10 +190,10 @@
             <div class="row">
                 <div class="card mb-3 shadow-lg bg-white rounded justify-content-center mx-auto" style="width: 50rem !important;padding: 0 !important; ">
                   <div class="card-header bg-white d-flex justify-content-between pb-0">
-                    <h5 class="card-title p-2 " style="font-size: calc(0.8em + 1vw);">{{$item->user->username}}</h5>
-                    <p class="card-text p-2" style="font-size: calc(0.7em + 0.5vw);">{{$item->session()->count()}} sessions</p>
+                    <h5 class="card-title p-2 " style="overflow-y: auto; font-size: calc(0.8em + 0.7vw);">{{$item->user->username}}</h5>
+                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->session()->count()}} sessions</p>
 
-                    <p class="card-text p-2" style="font-size: calc(0.7em + 0.5vw);">{{$item->view}}views</p>
+                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->view}} views</p>
 
                     {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                   </div>
@@ -202,11 +202,11 @@
                     alt="Card image cap" >
                     <div class="card-body">
                       <div class=" bg-white d-flex justify-content-between">
-                          <h5  style="overflow-y: auto; font-size: calc(0.9em + 1vw);" class="card-title p-2">{{$item->subject}}</h5>
+                          <h5  style="overflow-y: auto; font-size: calc(0.9em + 0.7vw);" class="card-title p-2">{{$item->subject}}</h5>
 
                         </div>
                       <div class=" bg-white d-flex justify-content-between">
-                        <h5  style="overflow-y: auto; font-size: calc(0.7em + 0.7vw);" class="card-title p-2">{{$item->description}}</h5>
+                        <h5  style="overflow-y: auto; font-size: calc(0.6em + 0.7vw);" class="card-title p-2">{{$item->description}}</h5>
                         <h6 class="card-text p-2" style="font-size: calc(0.5em + 0.5vw);">{{date('d-m-Y', strtotime($item->updated_at))}}</h6>
                       </div>
                     </div>

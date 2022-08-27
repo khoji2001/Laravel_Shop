@@ -42,7 +42,7 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" value="{{ old('username') }}"><br>
+            <input type="text" id="username" maxlength="30" name="username" value="{{ old('username') }}"><br>
             
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="{{ old('email') }}"><br>
