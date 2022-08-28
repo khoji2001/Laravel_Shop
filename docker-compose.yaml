@@ -41,23 +41,30 @@ services:
     volumes:
       - ./storage/db-data:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_DATABASE: simple
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: roo
-      MYSQL_PASSWORD: root
+      MYSQL_USER: phpmyadmin
+      MYSQL_PASSWORD: phpmyadmin
     networks:
       - app_network
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     restart: always
+    depends_on:
+      - blog_db
     environment:
-      PMA_HOST: blog_db
-      PMA_USER: root
-      PMA_PASSWORD: root
+      - "PMA_HOST=blog_db"
+      - "MYSQL_USER=phpmyadmin"
+      - "MYSQL_PASSWORD=phpmyadmin"
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "UPLOAD_LIMIT=3000000000"
     ports:
-      - "8080:80"
+      - "8085:80"
+
+    networks:
+      - app_network
 
   # blog_redis:
   #   container_name: blog_redis
