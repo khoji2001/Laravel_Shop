@@ -77,6 +77,7 @@
         </div>
     </header>
     <div><br><br><br>
+      
     <div id ="origin" style="display: block">
       <div class="container">
           <form method="POST" action="{{ '/api/session/' }}" enctype="multipart/form-data" >
@@ -107,7 +108,7 @@
           </form><br><br>
       
       </div>
-    </div>
+    
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -120,22 +121,25 @@
     @endif
     <div style="" class="countt">
       <form action="/api/leave" method="post">
+        
           <div class="containerbut">
               <input type = "hidden" name = "course_id" value = {{(int)$id}}/>
               <input type="submit" style="background-color: rgb(199, 23, 23)" value="Leave" />
           </div>
       </form>
     </div>
+  </div>
 
 
-    <div id ="loading" style="display: none">
-      <div class="text-center">
+    <div id ="loading" style="display: none; margin: auto; padding:20px;">
+      {{-- <div class="text-center">
           <div class="spinner-border" role="status">
           </div>
       </div>
       <div class="d-flex justify-content-center">
           <span class="sr-">uploading...</span>
-      </div>
+      </div> --}}
+      <center>uploading...</center>
     </div>
 
 

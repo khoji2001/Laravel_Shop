@@ -54,7 +54,7 @@
       @if($related->isNotEmpty())
           @foreach ($related as $item)
             <div class="container d-flex align-items-center justify-content-center">
-              <a style="color:rgb(150, 41, 41);   text-decoration: none;" href="{{ asset("course/$item->id") }}">{{$item->subject}}</a>
+              <a style="color:rgb(150, 41, 41);   text-decoration: none; overflow-y: auto;" href="{{ asset("course/$item->id") }}">{{$item->subject}}</a>
             </div>
           @endforeach
       @else
