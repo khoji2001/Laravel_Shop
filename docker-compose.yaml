@@ -44,7 +44,7 @@ services:
       - 3307:3306
     environment:
       MYSQL_DATABASE: simple
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 0312327129
       MYSQL_USER: phpmyadmin
       MYSQL_PASSWORD: phpmyadmin
     networks:
@@ -58,7 +58,7 @@ services:
       - "PMA_HOST=blog_db"
       - "MYSQL_USER=phpmyadmin"
       - "MYSQL_PASSWORD=phpmyadmin"
-      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_ROOT_PASSWORD=0312327129"
       - "UPLOAD_LIMIT=3000000000"
     ports:
       - "8085:80"
