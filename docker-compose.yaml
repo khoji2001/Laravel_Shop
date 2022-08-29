@@ -42,11 +42,9 @@ services:
       - ./storage/db-data:/var/lib/mysql
     ports:
       - 3307:3306
-    environment:
-      MYSQL_DATABASE: simple
-      MYSQL_ROOT_PASSWORD: r0312327129oot
-      MYSQL_USER: phpmyadmin
-      MYSQL_PASSWORD: phpmyadmin
+
+    env_file:
+    - productions.env
     networks:
       - app_network
   phpmyadmin:
@@ -54,12 +52,9 @@ services:
     restart: always
     depends_on:
       - blog_db
-    environment:
-      - "PMA_HOST=blog_db"
-      - "MYSQL_USER=phpmyadmin"
-      - "MYSQL_PASSWORD=phpmyadmin"
-      - "MYSQL_ROOT_PASSWORD=r0312327129oot"
-      - "UPLOAD_LIMIT=3000000000"
+    env_file:
+    - production.env
+
     ports:
       - "8085:80"
 

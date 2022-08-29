@@ -24,7 +24,7 @@
       <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #033E5B">
         <img src="images/logook.png" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
 
-        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Concise</a>
 
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
