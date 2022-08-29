@@ -59,7 +59,7 @@
               <label for="cover">Cover:</label><br>
               {{-- <input type="file" class="image" id="cover" name="image" accept="image/png, image/jpeg , image/jpg"><br><br><br> --}}
               
-              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload" class=" imageUpload" /><br><br>
+              <input type='file' id="imageUpload" accept="image/png, image/jpeg , image/jpg" name="imageUpload" class=" imageUpload" /><br><br>
               <input type="hidden" name="base64image" name="base64image" id="base64image">
               {{-- <img id="blah" src="#" alt="your image" /> --}}
 
@@ -83,7 +83,7 @@
               <input type="submit" value="Submit" id="form_sub" onclick="loader();">
           </form>
       </div><br><br>
-    </div>
+    
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -94,6 +94,7 @@
         {{ session()->get('message') }}
     </div>
     @endif
+    </div>
     
       <div class="modal fade bd-example-modal-lg imagecrop " data-keyboard="false" data-backdrop="static" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-lg" >
