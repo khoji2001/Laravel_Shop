@@ -69,7 +69,7 @@ class FrontEndController extends Controller
     {
 
         $this->validate($request,[
-            'username' => 'required|max:30|unique:users,username',
+            'username' => 'required|alpha_dash|max:30|unique:users,username',
             'email' => 'required|email|max:200|unique:users,email',
             'password' => 'required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required'

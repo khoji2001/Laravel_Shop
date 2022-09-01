@@ -24,7 +24,7 @@
       <nav class=" navbar navbar-dark navbar-expand-lg  justify-content-center" style="background-color: #033E5B">
         <img src="images/logook.png" width="45" alt="" class="d-inline-block align-middle mr-2 ms-2">
 
-        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Concise</a>
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto" style="padding-left: 10px !important; ">Simple</a>
 
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3" aria-controls="collapsingNavbar3" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,7 +104,7 @@
                     <h5 class="card-title p-2 " style="overflow-y: auto; font-size: calc(0.8em + 0.7vw);">{{$item->user->username}}</h5>
                     <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->session()->count()}} sessions</p>
 
-                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->view}} views</p>
+                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->view}}M views</p>
 
                   </div>
                     <img 

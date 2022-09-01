@@ -63,4 +63,14 @@
     </div>
     @endif
 </body>
+<script>
+    var field = document.querySelector('[name="username"]');
+
+    field.addEventListener('keypress', function ( event ) {  
+    var key = event.keyCode;
+        if (key === 32) {
+        event.preventDefault();
+        }
+    });
+</script>
 </html>
