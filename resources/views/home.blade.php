@@ -104,7 +104,7 @@
                     <h5 class="card-title p-2 " style="overflow-y: auto; font-size: calc(0.8em + 0.7vw);">{{$item->user->username}}</h5>
                     <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->session()->count()}} sessions</p>
 
-                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{$item->view}}M views</p>
+                    <p class="card-text p-2" style="overflow-y: auto; font-size: calc(0.7em + 0.5vw);">{{number_format($item->view)}}views</p>
 
                   </div>
                     <img 

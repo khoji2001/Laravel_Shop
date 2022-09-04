@@ -53,7 +53,7 @@ class SessionController extends Controller
                 function ($attribute, $value, $fail) {
                     $video = new GetId3($value);
         
-                    if ($video->getPlaytimeSeconds() > 62) {
+                    if ($video->getPlaytimeSeconds() > 61) {
                         $fail('The video must be shorter than 60 seconds.');
                     }
                 }
